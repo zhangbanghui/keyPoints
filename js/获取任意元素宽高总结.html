@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		body {
+			height: 1000px;
+			border: 10px solid pink;
+		}
+		.box {
+			width: 500px;
+			height: 100px;
+			border: 5px solid skyblue;
+			margin-left: 100px;
+			padding: 10px;
+		}
+	</style>
+</head>
+<body>
+	body设置了10px的边框
+	<div class="box" id="box">
+		高100px，边框5px
+	</div>
+	<!-- 1. 获取网页和屏幕的宽高 -->
+	<script type="text/javascript">
+		console.log('网页可见区域宽:===' + document.body.clientWidth);  // 网页可见区域宽
+		console.log('网页可见区域高:===' + document.body.clientHeight); // 网页可见区域高
+		console.log('网页可见区域宽(包括边线的宽):===' + document.body.offsetWidth);  // 网页可见区域宽(包括边线的宽)
+		console.log('网页可见区域高(包括边线的宽):===' + document.body.offsetHeight); // 网页可见区域高(包括边线的宽)
+		console.log('网页正文全文宽:===' + document.body.scrollWidth);  // 网页正文全文宽
+		console.log('网页正文全文高:===' + document.body.scrollHeight); // 网页正文全文高
+
+
+		// 页面指定了DTD，即指定了DOCTYPE时，使用document.documentElement, 此时使用 document.body 值一直为0
+		console.log('网页被卷曲出去的高:===' + document.body.scrollTop);    // 网页被卷曲出去的高
+		console.log('网页被卷曲出去的左侧部分:===' + document.body.scrollLeft);   // 网页被卷曲出去的左侧部分
+
+
+		console.log('网页向上卷曲出去的距离:===' + window.pageYOffset);  // 网页向上卷曲出去的距离
+		console.log('网页向左卷曲出去的距离:===' + window.pageXOffset);  // 网页向左卷曲出去的距离
+		console.log(window.scrollY)  // 相当于 window.pageYOffset
+		console.log(window.scrollX)  // 相当于 window.pageXOffset 
+		console.log(document.documentElement.scrollTop);  // 相当于 window.pageYOffset 
+		console.log(document.documentElement.scrollLeft); // window.pageXOffset
+	</script>
+	<!-- 2. 获取元素的宽高 -->
+	<script type="text/javascript">
+		var box = document.getElementById('box');
+		
+		// 1. 只读属性
+		// 所谓的只读属性指的是DOM节点的固有属性，该属性只能通过js去获取而不能通过js去设置，而且获取的值是只有数字并不带单位的（px,em等）
+
+		// 1）clientWidth和clientHeight
+		// 该属性指的是元素的可视部分宽度和高度，即padding+content，如果没有滚动条，即为元素设定的高度和宽度，如果出现滚动条，滚动条会遮盖元素的宽高，那么该属性就是其本来宽高减去滚动条的宽高
+		console.log('元素的可视部分宽度:===' + box.clientWidth);
+		console.log('元素的可视部分高度:===' + box.clientHeight);
+
+		// 2）offsetWidth和offsetHeight
+		// 这一对属性指的是元素的border+padding+content的宽度和高度，该属性和其内部的内容是否超出元素大小无关，只和本来设定的border以及width和height有关
+		console.log('元素的整体宽度:===' + box.offsetWidth);
+		console.log('元素的整体高度:===' + box.offsetHeight);
+
+		// 3）clientTop和clientLeft
+		// 这一对属性是用来读取元素的border的宽度和高度的
+		console.log('元素的边框宽度为:===' + box.clientTop);
+		console.log('元素的边框宽度为:===' + box.clientLeft);
+
+		// 4）offsetLeft和offsetTop
+		// 说到这对属性就需要说下offsetParent,所谓offsetParent指的是当前元素的离自己最近的具有定位的（position:absolute或者position：relative）父级元素（不仅仅指的是直接父级元素，只要是它的父元素都可以），该父级元素就是当前元素的offsetParent，如果从该元素向上寻找，找不到这样一个父级元素，那么当前元素的offsetParent就是body元素。而offsetLeft和offsetTop指的是当前元素，相对于其offsetParent左边距离和上边距离，即当前元素的border到包含它的offsetParent的border的距离
+		console.log('元素相对于具有定位的父级元素左距离:===' + box.offsetLeft)
+		console.log('元素相对于具有定位的父级元素上边距离:===' + box.offsetTop)
+
+		// 5）scrollHeight和scrollWidth
+		// 顾名思义，这两个属性指的是当元素内部的内容超出其宽度和高度的时候，元素内部内容的实际宽度和高度，需要注意的是，当元素其中内容没有超过其高度或者宽度的时候，该属性的值等于clientHeight和clientWidth
+		console.log(box.scrollHeight);;;;;
+		console.log(box.scrollWidth);
+
+
+		// 2. 可读可写属性
+		// 所谓的可读可写属性指的是不仅能通过js获取该属性的值，还能够通过js为该属性赋值
+
+		// 1）scrollTop和scrollLeft
+		// 这对属性是可读写的，指的是当元素其中的内容超出其宽高的时候，元素被卷起的高度和宽度
+		console.log('被卷出去的高度为:===' + box.scrollTop);
+		console.log('被卷出去的宽度为:===' + box.scrollLeft);
+
+		// 2）obj.style.*属性
+		// 对于一个dom元素，它的style属性返回的是一个对象，这个对象中的任意一个属性是可读写的。如obj.style.top,obj.style.wdith等，在读的时候，他们返回的值常常是带有单位的(如px),同时，对于这种方式，
+
+		// 它只能够获取到该元素的行内样式，而并不能获取到该元素最终计算好的样式，这就是在读取属性值得时候和以上只读属性的区别，要获取计算好的样式，请使用obj.currentstyle（IE）和getComputedStyle(IE之外的浏览器)。另一方面，这些属性能够被赋值，js运动的原理就是通过不断修改这些属性的值而达到其位置改变的，需要注意的是，给这些属性赋值的时候需要带单位的要带上单位，否则不生效
+	</script>
+	<!-- 3. 鼠标位置 -->
+	<script type="text/javascript">
+		// 1）clientX和clientY
+		// 这对属性是当事件发生时，鼠标点击位置相对于浏览器可视区的坐标，即浏览器左上角坐标的（0,0），该属性以浏览器左上角坐标为原点，计算鼠标点击位置距离其左上角的位置，不管浏览器窗口大小如何变化，都不会影响点击位置的坐标。
+		document.onclick = function (e) {
+			console.log('鼠标距离浏览器左上角的横距离为:===' + e.clientX);
+			console.log('鼠标距离浏览器左上角的纵距离为:===' + e.clientY);
+		}
+
+		// 2）screenX和screenY
+		// 事件发生时鼠标相对于屏幕的坐标，以设备屏幕的左上角为原点，事件发生时鼠标点击的地方即为该点的screenX和screenY值
+		document.onclick = function (e) {
+			console.log('鼠标距离屏幕左上角的横距离为:===' + e.screenX);
+			console.log('鼠标距离屏幕左上角的纵距离为:===' + e.screenY);
+		}
+
+		// 3）offsetX和offsetY
+		// 这一对属性是指当事件发生时，鼠标点击位置相对于该事件源的位置，即点击该div，以该div左上角为原点来计算鼠标点击位置的坐标
+		box.onclick = function (e) {
+			e.stopPropagation();
+			console.log('鼠标距离div左上角的横距离为:===' + e.offsetX);
+			console.log('鼠标距离div左上角的纵距离为:===' + e.offsetY);
+		}
+
+		// 4)pageX和pageY
+		// 该属性是事件发生时鼠标点击位置相对于页面的位置，通常浏览器窗口没有出现滚动条时，该属性和event.clientX及event.clientY是等价的，但是当浏览器出现滚动条的时候，pageX通常会大于clientX，因为页面还存在被卷起来的部分的宽度和高度
+		document.onclick = function (e) {
+			console.log('鼠标距离页面左上角的横距离为:===' + e.pageX);
+			console.log('鼠标距离页面左上角的纵距离为:===' + e.pageY);
+		}
+	</script>
+</body>
+</html>

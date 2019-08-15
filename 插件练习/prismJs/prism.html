@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="./prism.css">
+	<script type="text/javascript" src="../../dependencies/jquery.js"></script>
+	<script type="text/javascript" src="./clipboard.js"></script>
+	<script type="text/javascript" src="./prism.js"></script>
+	<style type="text/css">
+		* {
+margin: 0;
+padding: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<!-- <pre class="language-xml">
+		<code id="printShow">
+			
+		</code>
+	</pre> -->
+	
+	<script type="text/javascript">
+		var xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0">
+
+    <bean
+        class="org.apache.activemq.camel.component.ActiveMQComponent"
+        id="activemq" >
+        <property name="brokerURL" value="tcp://localhost:61616"/>
+        <property name="username" value="system"/>
+        <property name="password" value="manager"/>
+    </bean>
+
+    <camelContext id="FE-NJPF-0001-000019" xmlns="http://camel.apache.org/schema/blueprint">
+
+        <route id="001">
+            <from uri="timer://one?period=1s"/>
+            <setBody>
+                <simple>hello world-----------</simple>
+            </setBody>
+            <to uri="activemq:queue:test003?exchangePattern=InOut&amp;requestTimeout=2000"/>
+        </route>
+
+        <route id="002">
+            <from uri="activemq:queue:test003"/>
+            <setBody>
+                <simple>111</simple>
+            </setBody>
+        </route>
+
+    </camelContext>
+
+</blueprint>`;
+		$(function () {
+			window.setTimeout(function () {
+				// var $pre = $('<pre class="language-xml"></pre>');
+				// var $code = $('<code id="printShow"></code>');
+				// $pre.append($code);
+	
+				// $('body').append($pre)
+				$('.box').html('<pre class="language-xml"><code id="printShow"></code></pre>')
+				$('#printShow').text(xmlContent);
+				var print = document.getElementById("printShow");
+				Prism.highlightElement(print);
+			}, 1000)
+		})
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

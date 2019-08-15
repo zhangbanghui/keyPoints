@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		const obj = {
+			foo: 10,
+			get foo() {
+				return 18
+			},
+			set foo(val) {
+				return val
+			}
+		}
+		console.log(obj.foo);
+		console.log(obj.foo(20));
+	</script>
+</body>
+</html>

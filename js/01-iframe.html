@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="box">
+		<h2>iframe页面</h2>
+	</div>
+	<form id="form">
+		<div>
+			<label>名字:</label>
+			<input type="text" name="name" placeholder="你好" autocomplete="off">
+		</div>
+		<div>
+			<label>年龄:</label>
+			<input type="text" name="age" placeholder="12" autocomplete="off">
+		</div>
+		<div>
+			<label>爱好:</label>
+			<input type="text" name="hobbies" placeholder="打篮球" autocomplete="off">
+		</div>
+		<div>
+			<label>性别:</label>
+			<input type="text" name="gender" placeholder="男" autocomplete="off">
+		</div>
+		
+	</form>
+	<button id="btn">子页面赋值</button>
+		<button id="btn1">确认</button>
+		<script type="text/javascript" src="../dependencies/jquery.js"></script>
+		<script type="text/javascript" src="./side.js"></script>
+		<!-- <script type="text/javascript">
+			(function () {
+			function Side() {
+				// iframe.attr('src', '01.html');
+				// console.log(iframe.src)
+				var _this = this;
+				this.destory = "";
+				this.open = function (url, data, callback) {
+					// console.log(iframe.src)
+					if (_this.iframe) {
+						_this.iframe.remove()
+					}
+					_this.iframe = $('<iframe id="iframe" src frameborder="0" width="400" height ="200"></iframe>')
+					_this.iframe.attr('src', url);
+					$('body').append(_this.iframe)
+					_this.iframe.on('load', function () {
+						// console.log(_this.iframe[0].contentWindow.getData)
+						if (_this.iframe[0].contentWindow.setData) {
+							console.log(111)
+							_this.iframe[0].contentWindow.setData(data)
+						}
+						_this.iframe[0].contentWindow.username = 'zs';
+						_this.iframe[0].contentWindow.getData = function () {
+							// console.log(111)
+							return data;
+						}
+					})
+					_this.destory = function (param) {
+						if (callback) {
+							callback(param)
+						}
+					}
+
+				}
+				this.close = function (data) {
+					_this.iframe.remove();
+					// _this.destory(data)
+				}
+			}
+			$.newSide = null;
+			$.side = function () {
+				$.newSide = new Side()
+			}
+			$.side.open = function (url, data, callback) {
+				$.newSide.open(url, data, callback)
+			}
+			$.side.close = function (data) {
+				$.newSide.close(data)
+			}
+		})()
+		</script> -->
+
+	<script type="text/javascript">
+
+				function add() {}
+				function setData() {}
+				// function getData() {}
+
+				$('#btn').click(function () {
+					var res = getData();
+					console.log(res)
+				})
+
+				$('#btn1').click(function () {
+					$.side.close({ 'id': 1 })
+				})
+
+				// $(function () {
+				// 		function add() {}
+				// function setData() {}
+				// // function getData() {}
+
+				// $('#btn').click(function () {
+				// 	var res = getData();
+				// 	console.log(res)
+				// })
+
+				// $('#btn1').click(function () {
+				// 	side.close({ 'id': 1 })
+				// })
+				// })
+			
+
+
+
+
+
+		// function getData() {}
+			// var res = getData();
+			// $('#btn').click(function () {
+			// 	console.log(res)
+			// })
+			// console.log(getData)
+			// console.log(username)
+
+	</script>
+</body>
+</html>

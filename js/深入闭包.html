@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 链式作用域：子对象会一级一级地向上寻找所有父对象的变量
+
+		var n = 100;
+		function f1() {
+			var n = 1;
+			function f2() {
+				n++;
+				console.log(n);
+			}
+			return f2;
+		}
+		var res = f1();
+		res();
+		res();
+
+		// 闭包就是函数，是能够读取其他函数内部变量的函数
+		// 作用：一个是可以读取函数内部的变量，另一个就是让这些变量的值始终保持在内存中。
+
+		var name = 'The Window';
+		var obj = {
+			name: 'My Object',
+			getNameFunc: function () {
+				return function () {
+					return this.name;
+				}
+			}
+		}
+		var res = obj.getNameFunc()();
+		// res = this.name
+		console.log(res)  // The Window
+
+		function outerFun() {
+			var a = 0;
+			function innerFun() {
+				a++;
+				console.log(a)
+			}
+			return innerFun;
+		} 
+		var res1 = outerFun();
+		res1();
+		res1();
+		var res2 = outerFun();
+		res2();
+		res1();
+		res2();
+		
+	</script>
+</body>
+</html>

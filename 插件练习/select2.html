@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css">
+	<style type="text/css">
+		.select2 {
+			width: 100% !important;
+		}
+		.line {
+			border-bottom: 2px solid grey;
+			opacity: 0;
+			transition: width 180ms ease-out, opacity 120ms ease-in;
+			width: 0;
+			color: skyblue;
+		}
+		.select2-selection__clear {
+			display: none;
+		}
+	</style>
+	<style type="text/css">
+		.select2-container {z-index:999999 !important;}
+	</style>
+</head>
+<body>
+	<div style="width: 300px;" id="box">
+		<!-- <span>区域</span> -->
+		<h4>基础demo</h4>
+		<select id="area1" class="select2">
+			<!-- <option value="0">请选择区域</option>
+			<option value="1">珠海</option>
+	        <option value="2">深圳</option>
+	        <option value="3">澳门</option>
+	        <option value="4">香港</option> -->
+		</select>
+		<h4>多选demo</h4>
+		<select id="area2" class="select2" multiple="multiple">
+			<option value="0">请选择区域</option>
+			<option value="1">珠海</option>
+	        <option value="2" selected="">深圳</option>
+	        <option value="3">澳门</option>
+	        <option value="4">香港</option>
+		</select>
+		<select id="area2" class="select2">
+			<option value="0" selected="">请选择区域</option>
+			<option value="1">珠海</option>
+	        <option value="2">深圳</option>
+	        <option value="3">澳门</option>
+	        <option value="4">香港</option>
+		</select>
+	</div>
+	<div class="line"></div>
+	<input type="button" value="change" id="btn1">
+
+	<script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			$('#area1').select2({
+				placeholder: '珠海',
+				showSearch: false,
+				allowClear: true,
+				data: [{id: 0, text: 'story'},{id: 1, text: 'bug'},{id: 2, text: 'task'}]
+			});
+			$('#area2').select2({
+				placeholder: '珠海',
+				showSearch: false
+			})
+			$('#box').click(function () {
+				// console.log(111)
+				// alert("Selected value is: "+$("#e1").select2("val"));
+			})
+			// 默认赋值
+			$("#area2").val([1,2,3]).trigger('change');
+			// var areaObj = $("#area").select2();
+			// var optionVal = 1;
+			// areaObj .val(optionVal).trigger("change");
+			// areaObj .change();
+
+			$('#btn1').on('click', function () {
+				console.log(111)
+				$('.line').css({'width': '200px', 'opacity': '1'})
+			})
+		})
+	</script>
+	<script type="text/javascript">
+		function fn() {
+			console.log(this)
+		}
+		var arr = [fn, 'sss'];
+		arr[0]();
+	</script>
+</body>
+</html>

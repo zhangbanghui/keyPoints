@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="checkbox" name="aaa">
+	<script type="text/javascript">
+
+		//  jQuery
+		if($('#checkbox-id').is(':checked')) {
+		    // do something
+		}
+
+		// javascript
+		var check = document.getElementsByTagName('input')[0];
+		console.log(check.checked);//false   
+	</script>
+</body>
+</html>

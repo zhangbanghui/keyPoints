@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;			
+		}
+		.wrapper {
+			width: 300px;
+			height: 300px;
+			/* border: 1px solid red; */
+			background-color: #ccc;
+			margin: 100px auto;
+			position: relative;
+		}
+		.outer,.middle,.inner {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+		}
+		.wrapper .outer {
+			width: 200px;
+			height: 200px;
+			border: 5px solid #fff;
+			border-right: 5px solid transparent;
+			border-radius: 50%;
+			animation: clockwise 2s infinite linear;
+		}
+		/* .wrapper .outer:hover {
+			animation: clockwise 2s infinite linear;
+		}
+		.wrapper .middle:hover {
+			animation: anticlockwise 2s infinite linear;
+		}
+		.wrapper .inner:hover {
+			animation: clockwise 2s infinite linear;
+		} */
+		.wrapper .middle {
+			width: 150px;
+			height: 150px;
+			border: 5px solid hotpink;
+			border-top: 5px solid transparent;
+			border-radius: 50%;
+			animation: anticlockwise 2s infinite linear;
+		}
+		.wrapper .inner {
+			width: 100px;
+			height: 100px;
+			border: 5px solid #fff;
+			border-left: 5px solid transparent;
+			border-radius: 50%;
+			animation: clockwise 2s infinite linear;
+		}
+		@keyframes clockwise {
+			0% {
+				transform: translate(-50%, -50%) rotate(0deg)
+			}
+			100% {
+				transform: translate(-50%, -50%) rotate(360deg)
+			}
+		}
+		@keyframes anticlockwise {
+			0% {
+				transform: translate(-50%, -50%) rotate(0deg)
+			}
+			100% {
+				transform: translate(-50%, -50%) rotate(-360deg)
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="outer"></div>
+		<div class="middle"></div>
+		<div class="inner"></div>
+	</div>
+</body>
+</html>

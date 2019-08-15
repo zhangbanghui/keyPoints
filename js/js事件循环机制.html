@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p>一个线程中，事件循环是唯一的，但是任务队列可以拥有多个。</p>
+	<p>任务队列又分为macro-task（宏任务）与micro-task（微任务），在最新标准中，它们被分别称为task与jobs。</p>
+	<p>macro-task大概包括：script(整体代码), setTimeout, setInterval, setImmediate, I/O, UI rendering。</p>
+	<p>micro-task大概包括: process.nextTick, Promise, Object.observe(已废弃), MutationObserver(html5新特性)。</p>
+	<p>setTimeout/Promise等我们称之为任务源。而进入任务队列的是他们指定的具体执行任务。</p>
+	<script type="text/javascript">
+		/*
+			一个线程中，事件循环是唯一的，但是任务队列可以拥有多个。
+
+			任务队列又分为macro-task（宏任务）与micro-task（微任务），在最新标准中，它们被分别称为task与jobs。
+
+			macro-task大概包括：script(整体代码), setTimeout, setInterval, setImmediate, I/O, UI rendering。
+
+			micro-task大概包括: process.nextTick, Promise, Object.observe(已废弃), MutationObserver(html5新特性)
+
+			setTimeout/Promise等我们称之为任务源。而进入任务队列的是他们指定的具体执行任务。
+		*/
+	</script>
+	<script type="text/javascript">
+		// https://www.jianshu.com/p/12b9f73c5a4f
+		setTimeout(function () {
+			console.log('timeout1')
+		})
+		new Promise(function (res) {
+			console.log('promise1');
+			for (var i = 0; i < 3; i++) {
+				i === 2 && res()
+			}
+			console.log('promsie2');
+		}).then(function () {
+			console.log('then1')
+		})
+		console.log('global1')
+		// promise1
+		// pormsie2
+		// global1
+		// then1
+		// timeout1
+	</script>
+	<!-- <script type="text/javascript">
+		console.log('golb1');
+		setTimeout(function() {
+		    console.log('timeout1');
+		    process.nextTick(function() {
+		        console.log('timeout1_nextTick');
+		    })
+		    new Promise(function(resolve) {
+		        console.log('timeout1_promise');
+		        resolve();
+		    }).then(function() {
+		        console.log('timeout1_then')
+		    })
+		})
+		setImmediate(function() {
+		    console.log('immediate1');
+		    process.nextTick(function() {
+		        console.log('immediate1_nextTick');
+		    })
+		    new Promise(function(resolve) {
+		        console.log('immediate1_promise');
+		        resolve();
+		    }).then(function() {
+		        console.log('immediate1_then')
+		    })
+		})
+		process.nextTick(function() {
+		    console.log('glob1_nextTick');
+		})
+		new Promise(function(resolve) {
+		    console.log('glob1_promise');
+		    resolve();
+		}).then(function() {
+		    console.log('glob1_then')
+		})
+		setTimeout(function() {
+		    console.log('timeout2');
+		    process.nextTick(function() {
+		        console.log('timeout2_nextTick');
+		    })
+		    new Promise(function(resolve) {
+		        console.log('timeout2_promise');
+		        resolve();
+		    }).then(function() {
+		        console.log('timeout2_then')
+		    })
+		})
+		process.nextTick(function() {
+		    console.log('glob2_nextTick');
+		})
+		new Promise(function(resolve) {
+		    console.log('glob2_promise');
+		    resolve();
+		}).then(function() {
+		    console.log('glob2_then')
+		})
+		setImmediate(function() {
+		    console.log('immediate2');
+		    process.nextTick(function() {
+		        console.log('immediate2_nextTick');
+		    })
+		    new Promise(function(resolve) {
+		        console.log('immediate2_promise');
+		        resolve();
+		    }).then(function() {
+		        console.log('immediate2_then')
+		    })
+		})
+	</script> -->
+	<script type="text/javascript">
+		console.log('111')
+		setTimeout(function () {
+			console.log('222')
+		}, 2000);
+		new Promise(function (res) {
+			console.log('333')
+			res()
+		}).then(function () {
+			console.log('444')
+		})
+		setTimeout(function () {
+			console.log('555')
+		}, 1000)
+	</script>
+	<script type="text/javascript">
+		console.log('666')
+		function fun(i) {
+			function inner() {
+				console.log(i)
+			}
+			return inner
+		}
+		for (var i=1; i<=5; i++) {
+		    // setTimeout( function () {
+		    // 	console.log(i)
+		    // },  i*1000 );
+		    // var b = fun;
+		    setTimeout(fun(i), i*1000)
+		}
+	</script>
+	<script type="text/javascript">
+		var a = 20;
+		function fn() {
+		    console.log(this.a);
+		}
+		fn();
+		var a = 20;
+		var obj = {
+		    a: 10,
+		    c: this.a + 20,
+		    fn: function () {
+		        return this.a;
+		    }
+		}
+
+		console.log(obj.c);
+		console.log(obj.fn());
+	</script>
+</body>
+</html>

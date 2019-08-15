@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 1. #的含义
+		// #代表网页中的一个位置，其右边的字符，就是该位置的标识符。比如http://www.example.com/index.html#print就是代表index.html中的print位置。浏览器会自动把print位置滚动到页面可视区域内。
+		// 设置方法:
+		// step1：设置一个锚点<a href="#print">定位到print位置</a>
+		// step2：在页面需要定位的内容加上id="print"。例如：<div id="print"></div>
+
+		// 2. HTTP请求不包含#
+		// #号是用来指导浏览器动作的，对服务器端完全无用。所以，HTTP请求中不包含#。
+		// 比如，访问下面的网址：http://www.baidu.com#nihao,浏览器实际发出的请求是http://www.baidu.com,并没有请求'#nihao'的部分
+
+		// 3. #后面的字符
+		// 在第一个#后面出现的任何字符，都会被浏览器解读为位置标识符，这意味着这些字符不会被发送到服务器端
+		// 如：发送http://jquery.com/?color=#fff请求，但浏览器实际发送的是http://jquery.com/?color=，#fff被省略，只有将#转码为%23，浏览器才会将其作为实义字符处理，也就是说上面的网址应该被改成http://jquery.com/?color=%23fff
+
+		// 4. 改变#不触发网页重载
+		// 单单改变#后的内容，浏览器只会滚动到相应位置，不会重新加载网页，浏览器不会重新向服务器请求页面
+
+		// 5. 改变#会改变浏览器的访问历史
+		// 每一次改变#后的部分，都会在浏览器的访问历史中增加一个记录，使用‘后退’按钮，就可以回到上一个位置。这对于ajax应用程序特别有用，可以用不同的#值，表示不同的访问状态，然后想用户给出可以访问某个状态的链接。值得注意的是，上述规则对于IE6和IE7不成立，因为它们不会因为#值改变而增加历史记录
+
+		// 6. window.location.hash读取#值
+		// window.location.hash这个属性可读可写。读取时，可以用来判断网页状态是否改变；写入时，则会在不重载网页的前提下，创造一条访问历史记录。
+
+		// 7. onhashchange事件（监听hash值改变）
+		window.onhashchange = function () {
+			console.log(window.location.hash);
+		}
+
+	</script>
+</body>
+</html>

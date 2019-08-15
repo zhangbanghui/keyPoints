@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- 自动刷新页面 20s一次-->
+	<!-- <meta http-equiv="refresh" content="20"> -->
+	<!-- 页面自动跳转 -->
+	<!-- <meta http-equiv="refresh" content="20;url=http://www.baidu.com"> -->
+</head>
+<body>
+	<input type="button" value="刷新页面" id="btn">
+	<script type="text/javascript">
+		var btn = document.getElementById('btn');
+		btn.onclick = function () {
+			// 1. reload方法，该方法强迫浏览器刷新当前页面
+			// location.reload(); // 如果传入参数true则以get方式从服务器请求新的数据，相当于客户端按F5强制刷新页面
+
+			// 2. replace方法，该方法通过指定URL替换当前缓存在历史里的项目，因此使用replace方法之后，你不能通过前进和后退来访问已经被替换URL
+			// location.replace('http://www.baidu.com');
+
+			// 3.返回并刷新页面
+			// location.replace(前一个页面的URL)  
+			// 不要用history.go(-1)或者history.back()来返回并刷新页面，这两种方法不会刷新页面
+
+
+		}
+	</script>
+	
+</body>
+</html>

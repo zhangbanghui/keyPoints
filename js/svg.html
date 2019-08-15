@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>SVG DEMO</title>
+    <style>
+        /* div {
+        position: absolute;
+        background: #ff9900;
+        width: 100px;
+        height: 100px;
+    }
+
+    svg {
+        position: absolute;
+        z-index: 1;
+    } */
+    #box {
+      /* margin: 0 auto; */
+      
+    }
+    * {
+        margin: 0;
+        padding: 0;
+        user-select: none;
+    }
+    body {
+      background-color: black;
+    }
+    #box, #chart {
+      float: left;
+      width: 400px;
+      height: 400px;
+      background-color: #fff;
+      margin-left: 200px;
+      position: relative;
+    }
+
+    #chart .start {
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      background-color: pink;
+      position: absolute;
+      left: 50px;
+      top: 50px;
+    }
+    #chart .end {
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      background-color: pink;
+      position: absolute;
+      left: 250px;
+      top: 200px;
+    }
+    #chart svg {
+        border: 1px solid red;
+    }
+    </style>
+</head>
+
+<body style="overflow: hidden">
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="sss">
+        <!-- <path d="M 0,0 Q" class="222" stroke-dasharray="5,5" style="fill:none;stroke:red;stroke-width=6px;cursor: default;"></path> -->
+    </svg>
+    <div id="box">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%">
+            <!-- 圆 -->
+            <!-- <circle cx="100" cy="100" r="40" fill="transparent" stroke="yellow" stroke-width="4"></circle> -->
+            <!-- 矩形 -->
+            <!--  <rect width="200" height="200" x="100" y="100" fill="#f93" rx="30" ry="30"></rect> -->
+            <!-- 线 -->
+            <line x1="50" y1="50" x2="200" y2="200" stroke="red"></line>
+            <!-- <path class="link" d="M 10,234 C 177,234 177,341 344,341" style="fill:none;stroke:#000;stroke-width=6px;cursor: default;"> -->
+            <path class="link" d="M 10,234 Q 150,468 300,234" stroke-dasharray="5,5" style="fill:none;stroke:red;stroke-width=6px;cursor: default;" />
+        </svg>
+    </div>
+    <div id="chart">
+        <div class="start">start</div>
+        <div class="end">end</div>
+    </div>
+    <script type="text/javascript" src="../dependencies/jquery.js"></script>
+    <script type="text/javascript">
+    $(function() {
+
+        // svg是xml文档，html的xhtml文档，两种格式从理论上来讲是不一样的，所以直接用js操作html的语法应用到svg，是不起作用的。即使使用appendChild等语法也不会显示出来。
+        function svg(tagName) {
+            return $(document.createElementNS("http://www.w3.org/2000/svg", tagName));
+        }
+
+
+        $('.start').on('mousedown', function(e) {
+            var $sss = $('<path d="M 0,0 Q" class="222" stroke-dasharray="5,5" style="fill:none;stroke:red;stroke-width=6px;cursor: default;"></path>');
+            $('#sss').append($sss)
+            // console.log(111)
+            var startX = $(this).position().left + $(this).outerWidth() / 2;
+            var startY = $(this).position().top + $(this).outerHeight() / 2;
+            var $svg = $('<svg xmlns="http://www.w3.org/2000/svg" version="1.1"></svg>');
+            // var $path = $('<path d="" class="111" stroke-dasharray="5,5" style="fill:none;stroke:red;stroke-width=6px;cursor: default;"></path>');
+            var $path = svg('path');
+            $path.attr({
+                'd': '',
+                'stroke-dasharray': '5,5',
+                'style': 'fill:none;stroke:red;stroke-width=6px;cursor: default;'
+            }) 
+            $svg.append($path)
+            $('#chart').append($svg);
+            // $('#chart').html( $('#chart').html())
+            $(document).on('mousemove', function(ev) {
+                var currentX = ev.clientX - 800;
+                var currentY = ev.clientY;
+                var svgWidth = Math.abs(startX - currentX);
+                var svgHeight = Math.abs(startY - currentY);
+                var svgLeft = startX - currentX < 0 ? startX : currentX;
+                var svgTop = startY - currentY < 0 ? startY : currentY;
+                // console.log(svgWidth)
+                $svg.css({
+                    'width': svgWidth + 'px',
+                    'height': svgHeight + 'px',
+                    'position': 'absolute',
+                    'left': svgLeft,
+                    'top': svgTop
+                });
+                // var $path = $('<path d="M 10,234 Q 150,468 300,234" stroke-dasharray="5,5" style="fill:none;stroke:red;stroke-width=6px;cursor: default;"></path>');
+                var pathP = 'M 0,0 Q ' + svgWidth / 2 + ',' + svgHeight + ' ' + (currentX - startX) + ',' + (currentY - startY) + '';
+                // console.log($path.attr('d'))
+                $path.attr('d', pathP);
+                $('.222').attr('d', pathP);
+            });
+            $(document).on('mouseup', function() {
+                $(document).off('mousemove');
+                $(document).off('mouseup')
+            })
+        })
+    })
+    </script>
+</body>
+
+</html>

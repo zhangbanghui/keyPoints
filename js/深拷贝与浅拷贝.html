@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 基本类型: Number String Null Boolean Undefined
+		// 引用类型: Object Array Function
+	</script>
+	<script type="text/javascript">
+		// 浅拷贝  指向同一个地址，改变一个，另外一个改变
+		// var obj1 = {
+		// 	a: 10,
+		// 	b: {
+		// 		a: 11,
+		// 		b: 12
+		// 	},
+		// 	c: ['aa', 'bb', 'cc'],
+		// 	d: function () {
+		// 		console.log('111');
+		// 	}
+		// }
+		// var obj2 = obj1;
+		// obj2.a = 30;
+		// console.log(obj1);
+		// console.log(obj2);
+		// console.log(obj1 === obj2);
+	</script>
+	<script type="text/javascript">
+		// 深拷贝
+		var obj1 = {
+			a: 10,
+			b: {
+				a: 11,
+				b: 12
+			},
+			c: ['aa', 'bb', 'cc'],
+			d: function () {
+				console.log('111');
+			}
+		}
+
+		// 方法一   缺点：无法识别Function类型，会返回undefined
+		// function deepClone(obj) {
+		// 	return JSON.parse(JSON.stringify(obj));
+		// }
+		// var obj2 = deepClone(obj1);
+		// obj2.a = 30;
+		// console.log(obj1);
+		// console.log(obj2);
+		// obj1.d();
+
+		// 方法二  采用递归的方法
+		function deepClone(obj1, obj2) {
+			var obj = obj2 || {};
+			for (var key in obj1) {
+				var item = obj1[key];
+				// console.log(key + '===' + item)
+				if (item instanceof Array) {
+					obj[key] = [];
+					deepClone(item, obj[key]);
+				}else if (item instanceof Function) {
+					obj[key] = obj1[key];
+				}
+				else if (item instanceof Object) {
+					obj[key] = {};
+					deepClone(item, obj[key]);
+				}
+				else {
+					obj[key] = obj1[key];
+				}
+			}
+			return obj;
+		}
+		var newObj = deepClone(obj1);
+		obj1.d = function () {
+			console.log('不吃了')
+		}
+		console.log(obj1.d)
+		console.log(newObj.d)
+
+		var f1 = function () {
+			console.log(11)
+		}
+	</script>
+	<script type="text/javascript">
+		
+
+
+	</script>
+</body>
+</html>

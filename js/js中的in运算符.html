@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+			4 in arr 表示数组中arr[4]
+			"b" in arr 表示数组中arr[“b”]
+
+			in 运算符并不是直接在数组中查找是否存在指定的值!
+
+			如果右边是数组左边是数字,会把左边的数字 (字符串形式的也可以如 "2" in arr 等于 2 in arr)当成一个索引去检查,如果索引是合法的就返回true。
+
+			如果右边是数组左边是字符串 比如"id",会把左边的值当成一个属性去检查,如果找到该属性就返回true。
+
+			如果右边是对象这个时候不管左边字符串还是数字,会把左边的值当成一个属性去检查,如果找到该属性就返回true。
+
+			所以在上面的例子中:
+
+			第一个  ("b" in arr);中的 "b" 不是索引,arr中也没有这个属性 故返回 false.
+
+			第二个  (4 in arr);中的 4  是合法索引(上面的arr的合法索引是0-4),故返回 true.
+		*/
+	</script>
+	<script type="text/javascript">
+		var arr = [1, 2, 3, 4];
+		arr.forEach(function (ele, index) {
+			console.log(index);
+		});
+		var res = 0 in arr;
+		console.log(res); // true
+	</script>
+</body>
+</html>

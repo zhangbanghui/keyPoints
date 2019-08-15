@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+		// A instanceof B 运算符用来测试一个对象在其原型链中是否存在一个构造函数的prototype属性，即判断A是否是B的实例，检测的是原型
+		
+		// typeof 只能判断类型所以数组和对象返回的都是object,这时就要用instanceof来判断是否是数组
+
+		// typeof只能返回number, boolean, string, object, undefined, function这六种类型
+
+
+		// var arr = new Array(1, 2, 3)
+		// function Str(age) {
+		// 	this.age = age
+		// }
+		// var str = new Str(11)
+		// console.log(str)
+		// console.log(typeof(str))
+		// console.log(str instanceof Str);
+
+		// 封装判断类型的方法
+		function getDataType(obj) {
+			if (obj === null) {
+				return 'null'
+			}else if (typeof obj === 'object') {
+				// 如果是对象则判断是否是数组
+				if (obj instanceof Array) {
+					return 'array'
+				}else {
+					return 'object'
+				}
+			}else {
+				// 是基本类型则直接返回
+				return typeof obj;
+			}
+		}
+		var str = 'aaa';
+		var arr = [1, 2, 3];
+		var num = 10;
+		var und = undefined;
+		var nul = null;
+		var f1 = function () {}
+
+		console.log(getDataType(str))
+		console.log(getDataType(arr))
+		console.log(getDataType(num))
+		console.log(getDataType(und))
+		console.log(getDataType(nul))
+		console.log(getDataType(f1))
+
+		console.log(arr.__proto__ === Array.prototype);
+
+
+		// constructor 指向实例对象的构造函数
+		// 注意：null和undefined是无效的对象，所以不会有constructor,需要用typeof来判断
+		function Dog(name) {
+			this.name = name
+		}
+		var erha = new Dog('erha');
+		console.log(erha.constructor)
+
+
+		// Object.prototype.toString 返回具体的数据类型
+		var str = 'asd';
+		console.log(Object.prototype.toString.call(str)); // [object String]
+		console.log(Object.prototype.toString.call([])); // [object Array]
+		console.log(Object.prototype.toString.call(null)); // [object Null]
+		console.log(Object.prototype.toString.call(undefined));
+		console.log(Object.prototype.toString.call(function () {}));
+
+
+
+	</script>
+</body>
+</html>

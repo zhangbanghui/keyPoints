@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+		}
+		html,body {
+			width: 100%;
+			height: 100%;
+		}
+		input {
+			width: 100%;
+
+		}
+		.box {
+			width: 602px;
+			height: 600px;
+			position: relative;
+			margin: 50px auto;
+			border: 1px solid red;
+		}
+		.col-3,.col-6,.col-9,.col-12 {
+			float: left;
+			/* padding: 0 5px; */
+			margin: 0 -5px;
+		}
+		.col-3 {
+			width: 25%;
+		}
+		.col-6 {
+			width: 50%;
+		}
+		.col-9 {
+			width: 75%;
+		}
+		.col-12 {
+			width: 100%;
+		}
+		label {
+			/* text-align: right; */
+		}
+		.spec {
+			position: relative;
+			left: 0;
+		}
+		.one, .two {
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			float: left;
+		}
+		.two {
+			background-color: pink;
+			margin-left: 10px;
+		}
+		.one {
+			height: 130px;
+			margin-right: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="form-group col-12">
+			<div class="col-12">
+				<label class="col-3">姓名：</label>
+				<div class="col-9">
+					<input type="text" placeholder="111">
+				</div>
+			</div>
+		</div>
+		<div class="col-12">
+			<div class="form-group col-6">
+				<label class="col-3">姓名：</label>
+				<div class="col-9">
+					<input type="text" placeholder="111">
+				</div>
+			</div>
+			<div class="form-group col-6 spec">
+				<label class="col-3">姓名：</label>
+				<div class="col-9">
+					<input type="text" placeholder="111">
+				</div>
+			</div>
+		</div>
+		<div class="one"></div>
+		<div class="two"></div>
+	</div>
+</body>
+</html>

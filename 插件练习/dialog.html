@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="../dependencies/font-awesome/font-awesome.css">
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		html,body {
+			overflow: auto;
+			font-size: 12px;
+			font-family: Microsoft YaHei;
+			color: #333;
+		}
+		.box {
+			width: 300px;
+			margin: 50px auto;
+		}
+		.dialog_mask {
+			width: 100%;
+			height: 100%;
+			position: fixed;
+			left: 0;
+			top: 0;
+			background-color: rgba(51, 51, 51, 0.1);
+			overflow: auto;
+			display: none;
+		}
+		.dialog_mask .dialog_content {
+			width: 600px;
+			height: 400px;
+			border-radius: 5px;
+			position: relative;
+			margin: 50px auto;
+			background-color: #fff;
+			box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+		}
+		.dialog_close {
+			width: 24px;
+			height: 24px;
+			line-height: 24px;
+			text-align: center;
+			border-radius: 50%;
+			/* border: 1px solid #333; */
+			/* float: right; */
+			position: absolute;
+			right: 0;
+			top: 0;
+			cursor: pointer;
+		}
+		.dialog_close:hover {
+			color: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<input type="button" value="打开弹出层" id="btn1">
+		<input type="button" value="关闭弹出层" id="btn2">
+	</div>
+	<div class="dialog_mask" id="mask">
+		
+		<div class="dialog_content">
+			<iframe src="./01test.html" style="width: 100%;height: 100%;border: none;"></iframe>
+			<div class="dialog_close">
+				<div class="close">
+					<i class="fa fa-close"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var num = 10;
+		function say() {}
+	</script>
+	<script type="text/javascript" src="../dependencies/jquery.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			var num = 10;
+			function say() {}
+		})
+	</script>
+	<script type="text/javascript">
+		// ((function(win) {
+		// 	function Dialog(option) {
+		// 		var defaultOption = {
+		// 			'width': '600px',
+		// 			'height': '400px'
+		// 		}
+		// 		this.option = $.extend(true, option, defaultOption);
+		// 		this.init();
+		// 	}
+		// 	Dialog.prototype.init = function () {
+		// 		var _this = this;
+		// 		var mask = $('<div class="dialog_mask"></div>');
+		// 		var content = $('<div class="dialog_content"></div>');
+		// 		mask.append(content);
+		// 		var iframe = $('<iframe frameborder="0" style="width:100%;height:100%;" class="dialog_iframe"></iframe>')
+		// 		content.append(iframe)
+		// 		var close = $('<div class="dialog_close"><i class="fa fa-close"></i></div>');
+		// 		close.on('click', function () {
+		// 			_this.close();
+		// 		})
+		// 		content.append(close);
+		// 		$('body').append(mask);
+		// 	}
+		// 	Dialog.prototype.open = function (url) {
+		// 		$('.dialog_iframe').attr('src', url);
+		// 		$('.dialog_mask').show();
+		// 	}
+		// 	Dialog.prototype.close = function () {
+		// 		$('.dialog_iframe').attr('src', '');
+		// 		$('.dialog_mask').hide();
+		// 	}
+		// 	win.Dialog = Dialog;
+		// })(window))
+	</script>
+		<script type="text/javascript">
+		$(function () {
+			
+			// function say() {}
+
+			$('#btn1').on('click', function () {
+				$('#mask').show()
+			})
+
+			// var dialog = new Dialog();
+
+
+
+			// $('.close').on('click', function () {
+			// 	// $('.mask').hide();
+			// 	dialog.close();
+			// })
+			// $('#btn1').on('click', function () {
+			// 	// $('.mask').show();
+			// 	dialog.open('./demo1.html');
+			// })
+		})
+	</script>
+</body>
+</html>

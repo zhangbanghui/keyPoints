@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		.main {
+			width: 300px;
+			height: 300px;
+			border: 1px solid red;
+			position: relative;
+			text-align: center;
+			margin: 0 auto;
+		}
+		.main > div {
+			width: 100px;
+			border: 1px solid green;
+			margin: 10px;
+			float: left;
+		}
+		.one {
+			height: 50px;
+		}
+		.two {
+			height: 80px;
+		}
+		.three {
+			height: 30px;
+		}
+		.four {
+			height: 40px;
+		}
+		.five {
+			height: 50px;
+		}
+		@media (max-width: 800px) {
+			.main {
+				width: 200px;
+			}
+		}
+		li {
+			/* display: inline-block */
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+		var a = 0.1 + 0.2
+		console.log()
+	</script>
+	<script type="text/javascript">
+		// 声明和使用
+		// 1.构造函数
+		// var reg = new RegExp(/\d/);
+
+		// 2.字面量
+		// var reg = /[3]{1,2}/;
+
+
+		// 正则的类别
+		// 1.简单类  只要含有正则中的内容即可
+		// var reg1 = /abc/
+		// 2.字符类：在正则中使用[]整体表示一位字符，字符串的某一个字符满足中括号中的内容的其中一个即可
+		// var reg2 = /abc/;
+		// console.log(reg2.test('xyz'));
+		// 3.反向类：在字符类括号内部最开始写一个^,表示取反
+		// var reg3 = /[^abc]/; 字符串中含有除了abc意外的任意字符即可返回true
+		// console.log(reg3.test('abc'));
+		// 4.范围类 
+		// var reg4 = /[abcdefghigklmnopqrst]/;
+		// var reg4 = /[a-t]/; // 可以匹配a到t之间的任意一个字符
+		// console.log(reg.test('guwy'));
+		// 5.组合类
+		// var reg5 = /[0-9a-z]/;
+		// console.log(reg5.test('AAAAA'));
+		// 6.预定义类：正则提供了相应的api来简化写法
+		// var reg6 = /\d/; [0-9]
+		// . 匹配除了换行符意外的任意字符
+		// \w 单词字符(所有的字母数字和_)
+		// \W [^a-zA-Z0-9_] 非单词字符
+		// \s 匹配任意的空白符 space
+		// \S [^\f\r\n\t\v] 可见字符
+		// \d 匹配数字
+		// \D [^0-9] 非数字字符
+		// \b 匹配单词的开始或结束
+
+
+
+	</script>
+	<script type="text/javascript">
+		// 常用方法： reg.test('要检测的字符串')  返回布尔值
+
+		// var ua = navigator.userAgent;
+		// console.log(ua)
+		// var a = /\d{5}/;
+		// var reg = new RegExp(/1{2,3}/);
+		// var b = 1111111;
+		// console.log(reg.test(b));
+	</script>
+	<script type="text/javascript">
+		// replace 方法
+
+		// var str = 'asdfas';
+		// console.log(str.replace('a', 'z'));
+		// console.log(str.replace(/a/ig, 'z'));
+
+
+		// var str1 = ' a a ';
+		// 去掉空格
+		// console.log(str1.trim());
+		// console.log(str1.replace(/\s/g, ''));
+		// console.log(str1.replace(/^\s+|\s+$/g, ''));
+	</script>
+	<script type="text/javascript">
+
+		// match 方法  正则提取
+
+		// var str = 'aaa123hh1465hhh3489aaa';
+		// console.log(str.match(/\d{3}/)); // 提取第一个匹配到的值['123', index: 3, input: 'aaa123hh1465hhh3489aaa']
+		// console.log(str.match(/\d{3}/g));// 提取所有内容时不会有index和Input属性
+
+		// var str1 = '大家好，我的邮箱是:89998888@qq.com';
+		// console.log(str1.match(/\w+@\w+\.\w+/g));
+	</script>
+	<script type="text/javascript">
+		// exec 分组提取
+		var str1 = '大家好，我的邮箱是:89998888@qq.com,大家好我的邮箱是:asdasd@qq.com,大家好，我的邮箱是:89998888@qq.com,大家好，我的邮箱是:89998888@qq.com';
+		// 通过一个正则表达式多次处理一个字符串，可以多次提取出匹配到的内容以及起始位置索引值  匹配不到时返回null
+		var reg = new RegExp(/\w+@\w+\.\w+/g);
+		// console.log(reg.exec(str1));
+		var result;
+		while ((result = reg.exec(str1)) != null) {	
+		    console.log('邮箱是:' + result + '索引是:' + result.index)	
+		}
+
+
+	</script>
+	<script type="text/javascript">
+		// 捕获性分组和非捕获性分组
+
+
+		// var re = /(abc){2}/; // 这时RegExp会储存abc
+		// var str = 'abcabc'; 
+		// console.log(re.test(str))
+		// alert(RegExp.$1)  // $1表示的是正则匹配式子中的一个分组(abc)
+
+		// var re2 = /(?:abc){2}/  // RegExp 就不会储存这个分组了
+		// var str = 'abcabc';
+		// console.log(re2.test(str))
+		// alert(RegExp.$1)
+	</script>
+	<script type="text/javascript">
+		// 正则前瞻表达式 或者叫 零宽断言
+		// (?=exp) 正向前瞻 匹配后面满足表达式exp的位置
+		// (?!exp) 负向前瞻 匹配后面不满足表达式exp的位置
+		// (?<=exp) 正向后瞻 匹配前面满足表达式exp的位置(js不支持)
+		// (?<!exp) 负向后瞻 匹配前面不满足表达式exp的位置(js不支持)
+
+		// var str = 'Hello, Hi, I am Hiltary';
+		// var reg = /H(?=i)/g;  // 只匹配H后面紧跟i的H
+		// var newStr = str.replace(reg, 'T');
+		// console.log(newStr);
+
+		// var str1 = 'Hello, Hi, I am Hiltary';
+		// var reg1 = /H(?!i)/g;  // 只匹配H后面没有i的H
+		// var newStr1 = str1.replace(reg1, 'T');
+		// console.log(newStr1);
+
+		// 需求：将所有的非<p>标签改成<p>
+		var str = '<div>,<p>,<h1>,<span>,</span>,</h1>,</p>,</div>';
+		var reg = /<(\/?).*?>/g
+		var newStr = str.replace(reg, '<$1p>');
+		console.log(newStr)
+	</script>
+
+</body>
+</html>

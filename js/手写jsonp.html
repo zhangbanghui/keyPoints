@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 由于浏览器的安全性限制，不允许ajax访问协议不同，域名不同，端口不同的数据接口。
+		// 可以通过动态创建script标签的形式，把script标签的src属性指向数据接口的地址，因为script标签不存在跨域限制，这种数据获取方式称为jsonp(注意：jsonp只支持get请求)
+	</script>
+	<script type="text/javascript">
+		function showInfo(data) {
+			console.log(data);
+		}
+	</script>
+	<script type="text/javascript" src="http://127.0.0.1:3000/getscript?callback=showInfo">
+		// 注意：需要先用node启动服务器即jsonApp.js
+	</script>
+</body>
+</html>

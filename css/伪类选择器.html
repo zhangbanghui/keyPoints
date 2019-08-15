@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			ul {
+				width: 700px;
+				height: 500px;
+				margin: 0 auto;
+				margin-top: 100px;
+				list-style: none;
+				border-left: 1px solid #ccc;
+				border-top: 1px solid #ccc;
+			}
+			ul > li {
+				float: left;
+				width: 100px;
+				box-sizing: border-box;
+				height: 100px;
+				line-height: 100px;
+				text-align: center;
+				background-color: #fff;
+				border-right: 1px solid #ccc;
+				border-bottom: 1px solid #ccc;
+			}
+			/*相对于父元素的结构伪类*/
+			/*E:first-child: 查找E元素的父级元素中的第一个E元素,如果第一个子元素不是E元素,那么没有效果*/
+			/*下面这个样式是查找: li的父元素中的第一个li元素
+			1.相对于当前指定元素的父元素
+			2.查找的类型必须是指定的类型*/
+			li:first-child {
+				color: red;
+			}
+			/*E:last-child:查找E元素的父元素中最后一个指定类型的子元素*/
+			li:last-child {
+				background-color: skyblue;
+			}
+			/*查找的时候限制类型*/
+			/*1.也是相对于父元素
+			2.查找的时候只会查找满足类型的元素,可以过滤掉其他类型的元素*/
+			li:first-of-type {
+				color: red;
+			}
+			li:last-of-type {
+				/*background-color: orange;*/
+			}
+
+			/*指定索引位置 nth-child(从1开始的索引或者关键字,表达式)*/
+			li:nth-child(5) {
+				background-color: pink;
+			}
+			li:nth-last-child(5) {
+				background-color: yellow;
+			}
+			/*偶数个元素添加背景*/
+			li:nth-child(even) {
+				/*background-color: orange;*/
+			}
+			li:nth-child(odd) {
+				/*background-color: pink;*/
+			}
+			li:nth-of-type(even) {
+				/*background-color: orange;*/
+			}
+			li:nth-of-type(odd) {
+				/*background-color: pink;*/
+			}
+
+			/*想为前面5个元素添加样式*/
+			/*n:默认取值范围为0~子元素的长度*/
+			li:nth-of-type(-n+5) {
+				font-size: 24px;
+			}
+			li:nth-last-of-type(-n+5) {
+				font-size: 24px;
+			}
+
+			/*空值:没有任何的内容,连空格都没有*/
+			li:empty {
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<div></div>
+			<li></li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+			<li>9</li>
+			<li>10</li>
+			<li>11</li>
+			<li>12</li>
+			<li>13</li>
+			<li>14</li>
+			<li>15</li>
+			<li>16</li>
+			<li>17</li>
+			<li>18</li>
+			<li>19</li>
+			<li>20</li>
+			<li>21</li>
+			<li>22</li>
+			<li>23</li>
+			<li>24</li>
+			<li>25</li>
+			<li>26</li>
+			<li>27</li>
+			<li>28</li>
+			<li>29</li>
+			<li>30</li>
+			<li>31</li>
+			<li>32</li>
+			<li>33</li>
+			<li>34</li>
+			<li>35</li>
+		</ul>
+	</body>
+</html>

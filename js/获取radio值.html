@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="radio" name="aaa" value="111">
+	<input type="radio" name="aaa" value="222">
+	<script type="text/javascript">
+		//  JS 方法
+		var radios = document.getElementsByName('aaa')
+		for (var i = 0; i < radios.length; i++) {
+			if (radios[i].checked === true) {
+				alert(radio[i].value)
+			}
+		}
+
+		// jQuery 方法
+		console.log($('input[name = "aaa"]:checked').val())
+	</script>
+</body>
+</html>

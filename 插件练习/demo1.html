@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+	<h2>插件入门</h2>
+    <div id="demo-1">
+        <input type="" name="" id="" value="好的" />
+        <button id="add-1">add</button>
+    </div>
+    <div id="demo-2">
+        <input type="" name="" id="" value="11" />
+        <button id="add-2">add</button>
+    </div>
+    <script type="text/javascript">
+    	// 点击add可以添加个自input的内容到div里并实现变颜色
+    	(function(win) {
+    		function AddHtml(demo, btn) {
+    			this.div = document.getElementById(demo);
+    			this.btn = document.getElementById(btn);
+    			this.input = this.div.getElementsByTagName('input')[0];
+    			this.init();
+    		}
+    		AddHtml.prototype = {
+    			constructor: AddHtml,
+    			init: function () {
+    				var _this = this;
+    				this.btn.onclick = function () {
+    					var _val = _this.input.value;
+    					var tempdiv = document.createElement('div');
+    					tempdiv.innerText = _val;
+    					_this.div.appendChild(tempdiv);
+    					_this.setColor();
+    				}
+    			},
+    			setColor: function () {
+    				this.div.style.color = "red"
+    			}
+    		}
+    		// 监听 CommonJs 规范
+    		if (typeof module !== 'undefined' && module.exports) {
+    			module.exports = AddHtml;
+    		}
+    		// 兼容 AMD/CMD 规范
+    		if (typeof define === 'function') 
+    			define(function () {
+    				return AddHtml
+    			})
+    		// 注册全局变量，兼容直接使用 script 标签引入插件
+    		win.AddHtml = AddHtml;
+    	})(window)
+    </script>
+    <script type="text/javascript">
+    	new AddHtml('demo-1', 'add-1')
+    </script>
+    <script type="text/javascript">
+    	(function() {
+            console.log(parent.num)
+        })
+    </script>
+</body>
+
+</html>

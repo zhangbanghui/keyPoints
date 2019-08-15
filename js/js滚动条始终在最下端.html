@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.box {
+			width: 150px;
+			height: 150px;
+			overflow: auto;
+			border: 1px solid red;
+		}
+		p {
+			line-height: 24px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<p>11111</p>
+		<p>11111</p>
+		<p>11111</p>
+		<p>11111</p>
+		<p>11111</p>
+		<p>11111</p>
+		<p>11111</p>
+	</div>
+	<script type="text/javascript" src="../dependencies/jquery.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			var scroll = $('.box')[0].scrollHeight; // 获取卷曲上去的距离
+			$('.box').scrollTop(scroll);
+
+			// $(".box").scrollTop($(".box")[0].scrollHeight);
+		})
+	</script>
+</body>
+</html>

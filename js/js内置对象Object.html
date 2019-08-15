@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// js 内置对象 Objcet 方法汇总
+
+		// 1. Object.assign()
+		// 该方法用于将所有可枚举属性的值从一个或多个源对象复制到目标对象。它将返回目标对象
+		var obj1 = {
+			name: 'jack'
+		};
+		var obj2 = {
+			job: 'painters'
+		}
+		var res = Object.assign(obj1, obj2);
+		console.log(res); // { name: 'jack', job: 'painter' }
+		console.log(obj1); // { name: 'jack', job: 'painter' }
+		// 注意： 该方法是浅拷贝，如果属性是对象的话无法深拷贝
+
+
+		// 2. Object.create()
+		// 该方法创建一个新对象，使用现有的对象来提供新创建的对象的__proto__
+		var obj1 = {
+			age: 19,
+			say: function () {
+				console.log(this.name)
+			}
+		}
+		var obj2 = Object.create(obj1);
+		obj2.name = 'jack';
+		obj2.say(); // jack
+		console.log(obj2); // { name: 'jack' }
+		console.log(obj2.__proto__); // { age: 19, say: func }
+		// 注意： 该方法是以另外一个对象作为原型创建对象
+
+
+		// 3. Object.defineProterty()
+		// 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象
+		var obj = {};
+		Object.defineProperty(obj, 'age', {
+			value: 20
+		})
+		Object.defineProperty(obj, 'name', {
+			get: function () {
+				return 'zhangsan'
+			},
+			set: function () {
+				console.log('set')
+			}
+		});
+		console.log(obj.age); // 20
+		obj.name = 'aaa'; // 'set'
+
+
+		// 4. Object.prototype.hasOwnProperty()
+		// 方法会返回一个布尔值，指示对象自身属性中是否具有指定的属性（也就是是否有指定的键, 继承得到的属性无法检测）
+		var obj = {}
+		Object.defineProperty(obj, 'name', {
+			value: 'zhangsan'
+		});
+		var res = obj.hasOwnProperty('name');
+		console.log(res); // true
+
+	</script>
+</body>
+</html>

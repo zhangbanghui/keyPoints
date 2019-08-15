@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			box-sizing: border-box;
+			padding: 0;
+			margin: 0;
+		}
+		html {
+			width: 100%;
+			height: 100%;
+		}
+		body {
+			width: 100%;
+			height: 100%;
+			min-width: 1200px;
+		}
+		.wrapper {
+			width: 100%;
+			height: 100%;
+			background-color: pink;
+			padding-top: 100px;
+		}
+		.top {
+			width: 100%;
+			height: 100px;
+			position: fixed;
+			left: 0;
+			top: 0;
+			background-color: skyblue;
+		}
+		.left {
+			width: 200px;
+			height: calc(100% - 100px);
+			/* height: 200px; */
+			position: fixed;
+			top: 100px;
+			left: 0;
+			background-color: yellow;
+			overflow: auto;
+		}
+		.content {
+			width: 100%;
+			height: 100%;
+			padding-left: 200px;
+			overflow: auto;
+		}
+		::-webkit-scrollbar {
+		    width: 6px;
+		    background-color: cyan;
+
+		}
+		::-webkit-scrollbar-thumb {
+		    background-color: violet;
+		     border-radius: 5px;
+		}
+		/*
+			::-webkit-scrollbar ：滚动条整体部分，其中的属性: width,height,background,border等。
+
+			::-webkit-scrollbar-button ：滚动条两端的按钮。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果。
+
+			::-webkit-scrollbar-track ：外层轨道。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果。
+
+			::-webkit-scrollbar-track-piece ：内层轨道，具体区别看下面gif图，需要注意的就是它会覆盖第三个属性的样式。
+
+			::-webkit-scrollbar-thumb ：滚动条里面可以拖动的那部分
+
+			::-webkit-scrollbar-corner ：边角，两个滚动条交汇处
+
+			::-webkit-resizer ：两个滚动条交汇处用于拖动调整元素大小的小控件（基本用不上）
+		*/
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="top">
+			top
+		</div>
+		<div class="left">
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>last</p>
+		</div>
+		<div class="content">
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>111</p>
+			<p>last</p>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="date" id="tme">
+	<input type="text" id="ipt">
+	<input type="button" pattern="yyyy-MM-dd HH:mm:ss" value="时间赋值" id="btn">
+	<script type="text/javascript">
+		var input = document.getElementById('ipt')
+		var btn = document.getElementById('btn')
+		var timePicker = document.getElementById('tme')
+		var time
+		btn.onclick = function () {
+
+			time = new Date().getTime(input.value);
+			// time = new Date().getDate(input.value);
+			console.log(time)
+			input.value = time
+		}
+	</script>
+</body>
+</html>

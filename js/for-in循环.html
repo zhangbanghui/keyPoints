@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// for...in 用于对数组或者对象的属性进行循环/迭代操作
+
+		var arr = [1, 2, 3, 4, 5];
+		// 遍历数组的时候key是索引，arr[key]是索引对应的值
+		for (var key in arr) {
+			console.log(key + '====' + arr[key]);
+		}
+	</script>
+	<script type="text/javascript">
+		var obj = {
+			name: 'zs',
+			age: 10,
+			eat: function () {
+				console.log('eat');
+			}
+		}
+		// 遍历对象的时候key是属性名，obj[key]是对应的属性值
+		for (var key in obj) {
+			console.log(key + '====' + obj[key]);
+		}
+	</script>
+</body>
+</html>

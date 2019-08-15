@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" name="q">
+	<script type="text/javascript">
+		const obj1 = { a: 1, b: 2 }
+		const obj2 = { b: 3, c: 4 }
+		const res = Object.assign(obj1, obj2)
+		console.log(res) // { a: 1, b: 3, c: 4 }
+		console.log(obj1) // { a: 1, b: 3, c: 4 }
+		console.log(obj2) // { b: 3, c: 4 }
+
+		obj1.b = 5
+		obj2.c = 8
+		console.log(res) // { a: 1, b: 5, c: 5 }
+		console.log(obj1) // { a: 1, b: 5, c: 5 }
+		console.log(obj2) // { b: 3, c: 8 }
+		
+	</script>
+	<script type="text/javascript">
+		/*
+			语法
+				Object.assign(target, ...sources)
+			参数
+				target
+					目标对象
+				sources
+					源对象
+			返回值
+				目标对象
+			描述
+				如果目标对象中的属性具有相同的键，则属性将被源对象中的属性覆盖。后面的源对象的属性将类似地覆盖前面的源对象的属性
+				String类型和 Symbol 类型的属性都会被拷贝
+				注意，Object.assign 不会跳过那些值为 null 或 undefined 的源对象
+		*/
+	</script>
+</body>
+</html>

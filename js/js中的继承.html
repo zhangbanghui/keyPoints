@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	
+	<script type="text/javascript">
+		// 组合继承
+		function Person(name) {
+			this.name = name;
+		}
+		Person.prototype.sayHi = function () {
+			console.log('Person-Hi');
+		}
+		function Student(name, age) {
+			Person.call(this, name); // 构造函数继承
+			this.age = age;
+		}
+		Student.prototype = new Person(); // 原型继承
+		Student.prototype.run = function () {
+			console.log('Student-run');
+		}
+		var stu = new Student('ming', 15);
+		stu.sayHi();
+		stu.run();
+		console.log(stu.name, stu.age);
+	</script>
+</body>
+</html>

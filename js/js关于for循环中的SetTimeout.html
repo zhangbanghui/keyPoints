@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		for (var i = 0; i < 3; i++) {
+			setTimeout(function () {
+				console.log(i);
+			}, 1000 * i);
+		}
+		// setTimeout(func,time)是在time（毫秒单位）时间后执行func函数。浏览器引擎按顺序执行程序，遇到setTimeout会将func函数放到执行队列中，等到主程序执行完毕之后，才开始从执行队列（队列中可能有多个待执行的func函数）中按照time延时时间的先后顺序取出来func并执行。即使time=0,也会等主程序运行完之后，才会执行。
+	</script>
+	<script type="text/javascript">
+		// 解决方法
+		//  对setTimeout进行封装，目的是要每次调用定时函数都有自己的私有变量值。其实就是作用域的问题，把这个问题搞清楚，就可以解决这个问题，也不止我下面的一种解决方法，但原理都是一样。
+		function showNum(i) {
+			setTimeout(function () {
+				console.log(i);
+			}, i * 1000);
+		}
+		for (var i =0; i < 3; i++) {
+			showNum(i);
+		}
+	</script>
+</body>
+</html>

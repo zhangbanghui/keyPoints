@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// hasOwnProperty 判断对象是否包含特定的自身（非继承）属性
+
+		// 1. 判断自身属性是否存在
+		var obj1 = {
+			a: 10,
+			delete: function () {
+				delete this.a;  // 删除自身属性
+			}
+		}
+		console.log(obj1.hasOwnProperty('a'));
+		obj1.delete();
+		console.log(obj1.hasOwnProperty('a'));
+
+		// 2. 判断自身属性与继承属性
+		function Cat (name) {
+			this.name = name,
+			eat = function () {
+				console.log('eat');
+			}
+		}
+		var mao = new Cat('xiaohua');
+		mao.color = 'red';
+		Cat.prototype.c = function () {
+			console.log(c)
+		};
+		console.log(mao.hasOwnProperty('color'));
+		console.log(mao.hasOwnProperty('name'));
+		console.log(mao.hasOwnProperty('eat'));
+		console.log(mao.hasOwnProperty('c'));
+
+		// 3.遍历对象的所有自身属性
+		var buz = {
+			fog: 'stack'
+		}
+		for (var key in buz) {
+			if (buz.hasOwnProperty(key)) {
+				console.log(buz[key])
+			}else {
+				console.log(key)
+			}
+		}
+	</script>
+</body>
+</html>

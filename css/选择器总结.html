@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		/* 交集选择器 */
+		div.inner {
+			border: 1px solid red;
+		}
+		/* 并集选择器 */
+		div,p,.box {
+			color: red;
+		}
+		/* 伪类选择器 */
+		a:link /* 超链接点击之前 */
+		a:visited /* 超链接点击之后 */
+		:focus /* 某个标签获得焦点的时候(比如输入框) */
+		:hover /* 鼠标放到某个标签上的时候 */
+		:active /* 点击某个标签没有松开鼠标时 */
+		/* 子代选择器 */
+		div>p {
+			color: yellow;
+		}
+		/* 序选择器(ie6,7不兼容) */
+		p:first-child {
+			color: blue;
+		}
+		/* 下一个兄弟选择器 */
+		h5+p {
+			color: pink;
+		}
+		/* 属性选择器 */
+		div[id='one'] {
+			border: 1px solid yellow;
+		}
+	</style>
+</head>
+<body>
+	<div class="box" id="one">
+		<div class="inner">
+			<h5>你好</h5>
+			<p>你好1</p>
+			<p>你好2</p>
+			<p>你好3</p>
+		</div>
+	</div>
+</body>
+</html>

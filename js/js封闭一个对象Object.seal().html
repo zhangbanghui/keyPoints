@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+			语法:
+				Object.seal(obj)
+			参数：
+				要被封闭的对象
+			返回值：
+				被封闭的对象
+			描述：
+				通常，一个对象是可扩展的（可以添加新的属性）。密封一个对象会让这个对象变的不能添加新属性，且所有已有属性会变的不可配置。属性不可配置的效果就是属性变的不可删除，以及一个数据属性不能被重新定义成为访问器属性，或者反之。但属性的值仍然可以修改。尝试删除一个密封对象的属性或者将某个密封对象的属性从数据属性转换成访问器属性，结果会静默失败或抛出TypeError（在严格模式中最常见的，但不唯一）
+		*/
+		var obj = {
+			name: 'zs'
+		};
+		Object.seal(obj);
+		obj.name = 'ls'; // 可以改变现有值，但无法删除
+		obj.age = 10;
+		console.log(obj)
+	</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 数组的解构赋值
+		let [a, b, c] = [1, 2, 3];
+		console.log(a)
+
+		// 对象的解构赋值
+		let { foo, bar } = { foo: 'aaa', bar: 'bbb'};
+		console.log(foo);
+		// 如果变量名与属性名不一致，必须写成下面
+		let { foo: baz } = { foo: 'aaa', bar: 'bbb' };
+		console.log(baz)
+
+		let obj = {
+			p: [
+				'hello',
+				{
+					y: 'world'
+				}
+			]
+		}
+		let { p: [x, { y }] } = obj;
+		console.log(x + y);
+
+		// 字符串的解构赋值
+		// let [a, b, c, d, f] = 'hello';
+
+		var members = [
+			{
+				age: 18,
+				name: 'zs'
+			},
+			{
+				age: 28,
+				name: 'ls'
+			},
+			{
+				age: 38,
+				name: 'ss'
+			},
+		];
+
+		for (var key in members) {
+			let { age } = members[key];
+			console.log(age);
+		}
+
+	</script>
+</body>
+</html>

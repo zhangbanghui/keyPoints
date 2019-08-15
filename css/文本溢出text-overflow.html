@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.box {
+			width: 200px;
+			height: 100px;
+			margin: 100px auto;
+			border: 1px solid red;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden; /* 必须要填的属性，不然没有效果 */
+		}
+		.box:hover {
+			overflow: visible;
+			text-overflow: inherit;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本
+	</div>
+</body>
+</html>

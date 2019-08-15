@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../dependencies/jquery.js"></script>
+	<script type="text/javascript" src="../dependencies/vue.js"></script>
+	<script type="text/javascript">
+		
+		//即在加载的过程中执行下面的代码
+	 //    document.onreadystatechange = function () { 
+		// 	// console.log(time)
+		// 	var time = 0;
+		// 	var timeId = window.setInterval(function () {
+		// 		time += 1;
+		// 		console.log(time);
+		// 		if (time == 3) {
+		// 			window.clearInterval(timeId);
+		// 			//complete加载完成
+		// 			if (document.readyState == 'complete') {
+		// 				console.log(time)
+		// 				$('.cover').hide();
+		// 				console.log('ok');
+		// 			}
+		// 		}
+		// 	}, 1000);
+			
+		// }
+
+		
+
+		$(function () {
+			var time = 0;
+			var timeId = window.setInterval(function () {
+				time += 1;
+				console.log(time);
+				if (time == 3) {
+					window.clearInterval(timeId);
+					//complete加载完成
+					if (document.readyState == 'complete') {
+						console.log(document.readyState);
+						$('.cover').hide();
+					}
+				}
+			}, 1000);
+			var allImgs = $('img').size();
+			var num = 0;
+			$('img').each(function () {
+				// $(this)[0].onload = function () {
+				// 	console.log('over')
+				// }
+				$(this).on('load', function () {
+					num++;
+					$('b').text(Math.floor((num/allImgs) * 100) + '%');
+				})
+			})
+		})
+	</script>	
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		html,body {
+			width: 100%;
+			height: 100%;
+		}
+		img {
+			width: 10%;
+			height: 10%;
+		}
+		.cover {
+			width: 100%;
+			height: 100%;
+			position: relative;
+			background-color: #fff;
+			z-index: 999;
+		}
+		.cover h1 {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+		}
+		.loading{
+			width: 100%;
+			height: 100%;
+			position: fixed;
+			top:0;
+			left: 0;
+			z-index: 100;
+			background-color: #fff;
+		}
+        .loading .pic{
+        	width: 100px;
+        	height: 100px;
+        	position: absolute;
+        	top: 0;
+        	left: 0;
+        	bottom: 0;
+        	right: 0;
+        	margin: auto;
+        	font-size: 30px;
+        	text-align: center;
+        	line-height: 100px;
+        }
+        .loading .pic span{
+        	display: block;
+        	width: 80px;
+        	height: 80px;
+        	position: absolute;
+        	top: 10px;
+        	left: 10px;
+        	border-radius: 50%;
+        	box-shadow: 0 3px 0 #666;
+        	animation: rotate 1s infinite linear;-webkit-animation: rotate 1s infinite linear;
+        }
+        @-webkit-keyframes rotate{
+           0%{-webkit-transform: rotate(0deg);}
+           100%{-webkit-transform: rotate(360deg);}
+        }
+        @keyframes rotate{
+            100%{transform: rotate(360deg);}
+        }
+
+	</style>
+</head>
+<body>
+	<div class="cover">
+		<h1>页面加载中，请稍等。。。</h1>
+		<div class="loading">
+			<div class="pic">
+				<span></span>
+				<b>0%</b>
+			</div>
+		</div>
+	</div>
+	<div class="box" id="app">
+		<p>{{ msg }}</p>
+		<img src="../images/01.jpg" alt="">
+		<img src="../images/02.png" alt="">
+		<img src="../images/03.png" alt="">
+		<img src="../images/04.png" alt="">
+		<login></login>
+		<register></register>
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				msg: '这是测试数据这是测试数据这是测试数据'
+			},
+			methods: {
+				add: function () {
+					console.log('add');
+				},
+				delete: function () {
+					console.log('delete');
+				}
+			},
+			components: {
+				login: {
+					template: '<h1>这是login组件</h1>'
+				},
+				register: {
+					template: '<h1>这是register组件</h1>'
+				}
+			}
+		})
+	</script>
+
+</body>
+</html>

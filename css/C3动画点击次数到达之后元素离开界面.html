@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.box {
+			width: 300px;
+			height: 150px;
+			margin: 100px auto;
+			background-color: skyblue;
+			/* animation: leaveOut 1s forwards paused; */
+			transform-origin: left top;
+		}
+		@keyframes leaveOut{
+			0% {
+				transform: rotate(0);
+			}
+			15% {
+				transform: rotate(60deg);
+			}
+			30% {
+				transform: rotate(40deg);
+			}
+			45% {
+				transform: rotate(60deg);
+			}
+			60% {
+				transform: rotate(40deg);
+			}
+			99% {
+				transform: rotate(30deg) translate(100px, 300px);
+				opacity: 1;
+			}
+			100% {
+				transform: rotate(30deg) translate(100px, 300px);
+				opacity: 0;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<script type="text/javascript" src="../dependencies/jquery.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			var times = 0;
+			$('.box').on('click', function () {
+				console.log(111)
+				times += 1;
+				$(this).attr('data-count', times)
+				if (times === 10) {
+					$(this).css('animation', 'leaveOut 3s forwards')
+				}
+			})
+		})
+	</script>
+</body>
+</html>

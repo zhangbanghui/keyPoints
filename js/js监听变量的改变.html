@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var obj = {
+			'name': 'zs'
+		}
+		Object.defineProperty(obj, 'name', {
+			get: function () {
+				console.log('get');
+				return 'name'
+			},
+			set: function (val) {
+				console.log('set' + val)
+			}
+		})
+		console.log(obj.name)
+		obj.name = 'ls'
+
+
+	</script>
+</body>
+</html>

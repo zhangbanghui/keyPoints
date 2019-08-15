@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 在探讨箭头函数对于this的优化之前，我们先得明白this究竟是什么，以及它是如何使用的。this是使用call方法调用函数时传递的第一个参数，它可以在函数调用时修改，在函数没有调用的时候，this的值是无法确定。
+		// 1. 纯粹的函数调用
+		function test(name) {
+		    console.log(name)
+		    console.log(this)
+		}
+		test('Jerry')  //调用函数
+		// 这种方法我们使用最多，但是这种函数调用方法只是一种简写，它完整的写法是下面这样的
+		function test(name) {
+		    console.log(name)
+		    console.log(this)
+		}
+		test.call(undefined, 'Tom')
+		// call方法接收的第一个参数就是this，这里我们传了一个undefined。那么，依据定义，函数执行了之后打出来的this会是undefined吗？也不是。如果你传的 context 就 null 或者 undefined，那么 window 对象就是默认的 context（严格模式下默认 context 是 undefined）。
+
+
+		// 2. 对象中函数的调用
+		const obj = {
+		    name: 'Jerry',
+		    greet: function() {
+		        console.log(this.name)
+		    }
+		}
+		obj.greet()  //第一种调用方法
+		obj.greet.call(obj) //第二种调用方法
+		// 例子里第一种调用方法只是第二种调用方法的语法糖，第二种才是完整的调用方法，而且第二种方法厉害的地方在于它可以手动指定this。
+		// 手动指定this的例子
+		const obj = {
+		    name: 'Jerry',
+		    greet: function() {
+		        console.log(this.name)
+		    }
+		}
+		obj.greet.call({name: 'Spike'})  //打出来的是 Spike
+		// 从上面的例子我们看到greet函数执行时this，已经被我们改过了。
+
+
+		// 3. 构造函数中this
+		// 构造函数里的this稍微有点特殊，每个构造函数在new之后都会返回一个对象，这个对象就是this，也就是context上下文。
+		function Test() {
+		    this.name = 'Tom'
+		}
+		let p = new Test()
+		console.log(typeof p)  //object
+		console.log(p.name)    // Tom
+
+
+		// 4.window.setTimeout()和window.setInterval()中函数的调用
+		// window.setTimeout()和window.setInterval()的函数中的this有些特殊，里面的this默认是window对象。
+
+		// 总结:函数完整的调用方法是使用call方法，包括test.call(context, name)和obj.greet.call(context,name)，这里的context就是函数调用时的上下文，也就是this，只不过这个this是可以通过call方法来修改的；构造函数稍微特殊一点，它的this直接指向new之后返回的对象；window.setTimeout()和window.setInterval()默认的是this是window对象。
+	</script>
+	<!-- 箭头函数中的this -->
+	<script type="text/javascript">
+		// 箭头函数的特性一：默认绑定外层this
+		// 上面提到：this的值是可以用call方法修改的，而且只有在调用的时候我们才能确定this的值。而当我们使用箭头函数的时候，箭头函数会默认帮我们绑定外层this的值，所以在箭头函数中this的值和外层的this是一样的。
+		// 不使用箭头函数例子：
+		const obj = {
+			a: function() { console.log(this) }    
+		}
+		obj.a()  //打出的是obj对象
+		// 使用箭头函数的例子：
+		const obj = {
+		    a: () => {
+		        console.log(this)
+		    }
+		}
+		obj.a()  //打出来的是window
+		// 在使用箭头函数的例子里，因为箭头函数默认不会使用自己的this，而是会和外层的this保持一致，最外层的this就是window对象。
+
+
+		//  箭头函数的特性二：不能用call方法修改里面的this
+		// 这个也很好理解，我们之前一直在说，函数的this可以用call方法来手动指定，而为了减少this的复杂性，箭头函数无法用call方法来指定this。
+		const obj = {
+		    a: () => {
+		        console.log(this)
+		    }
+		}
+		obj.a.call('123')  //打出来的结果依然是window对象
+
+		// 因为上文我们说到window.setTimeout()中函数里的this默认是window，我们也可以通过箭头函数使它的this和外层的this保持一致：
+		const obj = {
+		    a: function() {
+		        console.log(this)
+		        window.setTimeout(() => { 
+		            console.log(this) 
+		        }, 1000)
+		    }
+		}
+		obj.a.call(obj)  //第一个this是obj对象，第二个this还是obj对象
+	</script>
+	<script type="text/javascript">
+		var arr = [1, 2, 3];
+		arr.forEach(function (item, index) {
+			console.log(this)
+		})
+		var d = 10;
+		var obj = {
+			f: this.d,
+			a: 1,
+			b : {
+				c: () => {
+					console.log(this)
+				},
+				d: function () {
+					console.log(this)
+				}
+			}
+		}
+		console.log(obj[f])
+		console.log(obj.f) // 10
+		obj.b.c() // window
+		obj.b.d() // obj
+	</script>
+</body>
+</html>
