@@ -49,3 +49,4 @@
 42. set 和 get 
 43. this 指向问题
 44. url 中的 hash
+45. js 其他类型转布尔类型
