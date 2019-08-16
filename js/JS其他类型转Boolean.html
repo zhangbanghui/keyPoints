@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+		// 一、String类型转化为Boolean
+
+			// 1. 转化结果为true的情况
+
+				// a. 任何非空字符串
+				Boolean('hello'); // true
+				// ps: 空白字符串也是返回true
+				Boolean(' '); // true
+
+			// 2.转化结果为false的情况
+
+				// a. 空字符串
+				Boolean(''); // false
+
+
+		// 二、Number类型转化为Boolean
+
+			// 1.转化结果为true的情况
+
+				// a. 任何非0数字值（包括无穷大）
+				Boolean(1); // true
+				Boolean(Infinity); // true
+
+			// 2. 转化结果为false的情况
+
+				// a. 0
+				Boolean(0); // false
+				// b. NaN
+				Boolean(NaN); // false
+
+
+		// 三、Object类型转化为Boolean
+
+			// 1. 1.转化结果为true的情况
+
+				// a. 任何对象（包括空的对象）
+				var a = { b: 'good' };
+				Boolean(a); // true
+
+				// b. 数组对象（包括空数组）
+				var arr = [1, 2];
+				Boolean(arr); // true
+
+				// c. 正则表达式
+				var pattern = /\d*/;
+				Boolean(pattern); // true
+
+			// 2. 转化结果为false的情况
+
+				// a. 空对象
+				// PS: 这里要跟前面的空的对象{}作区分，空的对象表示这个对象创建了，但是里面没东西，而空对象表示的是没有创建，就是一个null
+				Boolean(null); // false
+
+
+		// 四、Undefined类型转化为Boolean
+
+			// 只能返回false
+			Boolean(undefined); // false
+
+		
+
+
+	</script>
+</body>
+</html>
