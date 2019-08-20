@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.box {
+			width: 200px;
+			height: 100px;
+			background-color: rgba(0, 0, 0, 0.05);
+			position: relative;
+		}
+		.box:before {
+			content: '';
+			position: absolute;
+			left: 50%;
+			right: 50%;
+			top: 0;
+			height: 4px;
+			transition: all ease-out .3s;
+			background-color: #a9334c;
+		}
+		.box:after {
+			content: '';
+			position: absolute;
+			left: 50%;
+			right: 50%;
+			bottom: 0;
+			height: 4px;
+			transition: all ease-out .3s;
+			background-color: #a9334c;
+		}
+		.box:hover:before,  .box:hover:after{
+			left: 0;
+			right: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>
