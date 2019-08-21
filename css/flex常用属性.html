@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+		}
+		.box {
+			width: 400px;
+			height: 300px;
+			border: 1px solid red;
+			padding: 10px;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			/* align-items: center; */
+			/* justify-content: center; */
+		}
+		.item {
+			width: 180px;
+			height: 100px;
+			margin: 0 auto;
+		}
+		.item:nth-of-type(1) {
+			background-color: red;
+		}
+		.item:nth-of-type(2) {
+			background-color: hotpink;
+		}
+		.item:nth-of-type(3) {
+			background-color: skyblue;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="item"></div>
+		<div class="item"></div>
+		<div class="item"></div>
+	</div>
+	<script type="text/javascript">
+		/*
+			flex 常用属性
+				1. flex-direction 元素排列方向
+					row  横向从左到右排列==左对齐
+					row-reverse  与row 相反
+					column  从上向下排列==顶对齐
+					column-reverse 与 column 想法
+
+				2. flex-wrap 内容是否换行，内容一行容不下的时候才有效
+					nowrap 不换行
+					wrap 换行
+
+				3. justify-content 水平对齐方式
+					flex-start 水平左对齐
+					flex-end 水平右对齐
+					center 水平居中对齐
+					space-between 两端对齐
+					space-aroud 两端间距对齐（平分空白区域）
+
+				4. align-items 垂直对齐方式
+					strech 默认
+					flex-atart 上对齐，和默认差不多
+					flex-end 下对齐
+					center 居中对齐
+					baseline 基线对齐
+
+				注： align-items: center + justify-content: center 即可完成垂直居中对齐
+		*/
+	</script>
+</body>
+</html>
