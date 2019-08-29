@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    * {
+        box-sizing: border-box;
+    }
+    .box {
+    	margin: 0 auto;
+    	width: 400px;
+    	height: 300px;
+    	border: 1px solid grey;
+    	overflow: auto;
+    }
+    dl {
+        margin: 0;
+        padding: 24px 0 0 0;
+    }
+
+    dt {
+        background: #B8C1C8;
+        border-bottom: 1px solid #989EA4;
+        border-top: 1px solid #717D85;
+        color: #FFF;
+        font: bold 18px/21px Helvetica, Arial, sans-serif;
+        margin: 0;
+        padding: 2px 0 0 12px;
+        position: -webkit-sticky;
+        position: sticky;
+        top: -1px;
+    }
+
+    dd {
+        font: bold 20px/45px Helvetica, Arial, sans-serif;
+        margin: 0;
+        padding: 0 0 0 12px;
+        white-space: nowrap;
+    }
+
+    dd+dd {
+        border-top: 1px solid #CCC
+    }
+
+    .one {
+    	width: 200px;
+    	height: 200px;
+    	border: 1px solid grey;
+    	overflow: auto;
+    }
+    .one p {
+    	line-height: 24px;
+    	text-align: center;
+    }
+    .one .sticky {
+    	background-color: skyblue;
+    	position: sticky;
+    	top: -1px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <dl>
+            <dt>A</dt>
+            <dd>Andrew W.K.</dd>
+            <dd>Apparat</dd>
+            <dd>Arcade Fire</dd>
+            <dd>At The Drive-In</dd>
+            <dd>Aziz Ansari</dd>
+        </dl>
+        <dl>
+            <dt>C</dt>
+            <dd>Chromeo</dd>
+            <dd>Common</dd>
+            <dd>Converge</dd>
+            <dd>Crystal Castles</dd>
+            <dd>Cursive</dd>
+        </dl>
+        <dl>
+            <dt>E</dt>
+            <dd>Explosions In The Sky</dd>
+        </dl>
+        <dl>
+            <dt>T</dt>
+            <dd>Ted Leo & The Pharmacists</dd>
+            <dd>T-Pain</dd>
+            <dd>Thrice</dd>
+            <dd>TV On The Radio</dd>
+            <dd>Two Gallants</dd>
+        </dl>
+    </div>
+
+    <div class="one">
+    	<p>1111111</p>
+    	<p>1111111</p>
+    	<p class="sticky">给我锁住！</p>
+    	<p>1111111</p>
+    	<p>1111111</p>
+    	<p>1111111</p>
+    	<p>1111111</p>
+    	<p>1111111</p>
+    	<p>1111111</p>
+    	<p>1111111</p>
+    	<p>1111111</p>
+    	<p>1111111</p>
+    	<p>1111111</p>
+    </div>
+</body>
+
+</html>
