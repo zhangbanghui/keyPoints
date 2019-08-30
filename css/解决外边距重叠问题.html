@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+        }
+        .one {
+            background-color: hotpink;
+            margin-bottom: 30px;
+        }
+        .two {
+            background-color: skyblue;
+            margin-top: 20px;
+        }
+        /*
+            两个或多个块级盒子的垂直相邻边界会重合。结果的边界宽度是相邻边界宽度中最大的值。如果出现负边界，则在最大的正边界中减去绝对值最大的负边界。
+            如果没有正边界，则从零中减去绝对值最大的负边界。注意：相邻的盒子可能并非是由父子关系或同胞关系的元素生成。
+
+            解决方法：
+            1. 外层元素用 padding 代替
+            2. 内层元素设置透明边框 border：1px solid transparent
+            3. 内层元素使用绝对定位 position: absolute
+            4. 外层元素 overflow: hidden
+            5. 内层元素加 float: left 或者 display: inline-block
+            6. 内层元素 padding: 1px
+        */
+    </style>
+</head>
+<body>
+    <div class="one"></div>
+    <div class="two"></div>
+</body>
+</html>

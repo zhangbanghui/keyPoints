@@ -34,6 +34,7 @@
 	        <option value="3">澳门</option>
 	        <option value="4">香港</option> -->
 		</select>
+		
 		<h4>多选demo</h4>
 		<select id="area2" class="select2" multiple="multiple">
 			<option value="0">请选择区域</option>
@@ -42,6 +43,7 @@
 	        <option value="3">澳门</option>
 	        <option value="4">香港</option>
 		</select>
+		<button id="btn">清除</button>
 		<select id="area2" class="select2">
 			<option value="0" selected="">请选择区域</option>
 			<option value="1">珠海</option>
@@ -57,6 +59,11 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 	<script type="text/javascript">
 		$(function () {
+			$('#btn').on('click', function () {
+				// $('#area2').select2("val", "");
+				var data= $("#area2").select2();//获取selectid
+			    data.val(data.dataType).trigger("change");
+			})
 			$('#area1').select2({
 				placeholder: '珠海',
 				showSearch: false,
