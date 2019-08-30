@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.box {
+			margin: 100px auto;
+			width: 400px;
+			height: 400px;
+			border: 1px solid #999;
+			background-image: url('./ylj.png');
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-attachment: scroll;
+			background-size: contain;
+			background-clip: border-box;
+			background-origin: padding-box;
+		}
+
+		/* 
+			background-color: 
+				1. 颜色名称，如：background-color:red;
+				2. 十六进制背景色，如：background-color:#ff0000; / background-color:#f00;
+				3. rgb颜色，这里如果是rgba，a表示透明程度，为0全透明，为1全显示，如：background-color:rgb(255,0,0); / background-color:rgba(0,0,255,0.8);
+				4. transparent，透明，如：background-color:transparent;
+			
+			background-image:
+				1. url图片地址，可以多个图片，如：background-image: url(img/a.jpg),url(img/b.jpg);
+				2. none，不显示背景图像
+
+			background-repeat:
+				1. repeat：水平和垂直方向都重复图像，如：background-repeat: repeat;
+				2. repeat-x：水平方向重复图像
+				3. repeat-y: 垂直方向重复图像
+				4. no-repeat: 图像不重复
+
+			background-position:
+				1. 位置名字组合定位，只写一个默认另一个为居中，如：background-position: right bottom; / background-position: center;
+				2. 百分比位置，如：background-position: 20% 20%;
+				3. 具体像素位置， 如：background-position: 20px 20px;
+
+			background-attachment: 
+				1. scroll：背景图像相对于页面不动，会随着网页的滚动而移动，默认
+				2. fixed：背景图像相对于浏览器窗口不动，内容滚动的时候背景图像不动，如：background-attachment: fixed;
+
+			background-size: 
+				1. 像素大小，只写一个默认另一个为auto，如：background-size: 200px 100px;
+				2. 百分比大小，如：background-size: 60% 60%;
+				3. cover：背景图像覆盖当前元素的所有背景区域，如：background-size: cover;
+				4. contain：图像显示最大且刚好完全显示，一般不能覆盖全部背景区
+
+			background-clip: 
+				1. border-box：背景覆盖到边框区域，如：background-clip: border-box;
+				2. padding-box：背景覆盖到padding区域
+				3. content-box：背景只覆盖到content部分
+
+			background-origin: 
+				1. border-box：背景图像的起始位置在边框处，如：background-origin: border-box;
+				2. padding-box：背景图像的起始位置从padding处开始
+				3. content-box：背景图像的起始位置从content处开始
+
+			重点：简写方式
+				background: [background-color] [background-image] [background-repeat] [background-attachment] [background-position] / [ background-size] [background-origin] [background-clip];
+		 */
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>
