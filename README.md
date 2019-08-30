@@ -5,8 +5,13 @@
 
 ## 目录结构
 
-#### CSS
+#### HTML
   + 表单标签总结
+  + a标签中的 download 属性
+  + blockquote 和 q 标签
+  + meta 标签总结
+
+#### CSS
   + 传统响应式布局
   + 呼吸灯效果
   + 两侧伸展特效
@@ -22,10 +27,8 @@
   + css制作水波纹
   + css中的BFC
   + flex布局
-  + meta标签总结
   + overflow作用总结
   + flex常用属性
-  + a标签中的 download 属性
   + position 中的 sticky 定位
 
 #### JavaScript
