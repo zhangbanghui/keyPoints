@@ -1,72 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<style type="text/css">
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    .border {
+        width: 0;
+        height: 0;
+        border: 0px solid;
+        border-color: #00a67c #333;
+        float: left;
+        margin-left: 10px;
+    }
 
-	.border {
-    width: 0;
-    height: 0;
-    border: 0px solid;
-    border-color: #00a67c #333;
-    float: left;
-    margin-left: 10px;
-}
-.border1 {
-    border-left-width: 80px;
-    border-top-width: 80px;
-}
-.border2 {
-    border-left-width: 80px;
-    border-bottom-width: 80px;
-}
-.border3 {
-    border-right-width: 80px;
-    border-top-width: 80px;
-}
-.border4 {
-    border-right-width: 80px;
-    border-bottom-width: 80px;
-}
+    .border1 {
+        border-left-width: 80px;
+        border-top-width: 80px;
+    }
+
+    .border2 {
+        border-left-width: 80px;
+        border-bottom-width: 80px;
+    }
+
+    .border3 {
+        border-right-width: 80px;
+        border-top-width: 80px;
+    }
+
+    .border4 {
+        border-right-width: 80px;
+        border-bottom-width: 80px;
+    }
 
 
 
 
-		.image-layer {
-    width: 384px;
-    height: 240px;
-    margin: 40px auto 0;
-    position: relative;
-    cursor: pointer;
-    overflow: hidden;
-    background-color: skyblue;
-}
+    .image-layer {
+        width: 384px;
+        height: 240px;
+        margin: 40px auto 0;
+        position: relative;
+        cursor: pointer;
+        overflow: hidden;
+        background-color: skyblue;
+    }
 
-.image-layer:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    border: 0px solid;
-    border-color: rgba(0, 0, 0, 0.2) #fff;
-    -webkit-transition: border .5s ease; 
-}
+    .image-layer:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        border: 0px solid;
+        border-color: rgba(0, 0, 0, 0.2) #fff;
+        -webkit-transition: border .5s ease;
+    }
 
-.image-layer:hover:before {
-    border-right-width: 80px;
-    border-bottom-width: 80px
-}
-	</style>
+    .image-layer:hover:before {
+        border-right-width: 80px;
+        border-bottom-width: 80px
+    }
+    </style>
 </head>
-<body>
-	<div class="image-layer" id="image-layer">
-	    
-	</div>
 
-	<div class="border border1"></div>
-<div class="border border2"></div>
-<div class="border border3"></div>
-<div class="border border4"></div>
+<body>
+    <div class="image-layer" id="image-layer">
+    </div>
+    <div class="border border1"></div>
+    <div class="border border2"></div>
+    <div class="border border3"></div>
+    <div class="border border4"></div>
 </body>
+
 </html>
