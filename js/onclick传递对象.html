@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        在HTML 拼接中，有时会用到 onclick 事件绑定函数，并要其中传递参数；简单的参数不用说，但如果是一个对象的话，就会出现报错！
+
+        解决方法：
+        将对象转为 json ，再进行传递（HTML不能直接传递对象）；
+
+        备注：
+        区分 “js对象” 和 “json ” ：js 在接受到json 时能自动转化为js 对象；而例如HTML 中函数传递时，对象的传递只能转为json 来传！
+
+
+        双引号替换成单引号
+        var _adrobj = JSON.stringify(address).replace(/\"/g,"'");  
+        */
+    </script>
+</body>
+</html>
