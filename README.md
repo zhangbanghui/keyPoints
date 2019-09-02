@@ -33,6 +33,7 @@
   + position 中的 sticky 定位
   + 解决外边距重叠问题
   + background总结
+  + 使用table布局实现居中
 
 #### JavaScript
   + iframe 标签使用注意项
