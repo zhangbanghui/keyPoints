@@ -84,6 +84,21 @@
 		var f1 = function () {
 			console.log(11)
 		}
+
+		// 深拷贝另外版本
+		function deepCloneTwo (targetObj, sourceObj) {
+			var obj = targetObj || {};
+			for (var key in sourceObj) {
+				if (sourceObj.hasOwnproperty(key)) {
+					if (typeof sourceObj[key] == 'object') {
+						obj[key] = Array.isArray(sourceObj[key])? [] : {};
+						deelCloneTwo(obj[key], sourceObj[key]);
+					}else {
+						obj[key] = sourceObj[key];
+					}
+				}
+			}
+		}
 	</script>
 	<script type="text/javascript">
 		

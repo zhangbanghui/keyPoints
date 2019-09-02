@@ -88,8 +88,20 @@
 			$('#btn1').on('click', function () {
 				console.log(111)
 				$('.line').css({'width': '200px', 'opacity': '1'})
-			})
+			});
+			var obj = {
+				name: 'zs',
+				age: 18
+			};
+			obj = JSON.stringify(obj).replace(/\"/g,"'");
+			var button = $('<button onclick="sayHi('+obj+')">Click</button>');
+			$('#box').append(button);
+			
 		})
+		function sayHi(obj) {
+			console.log(obj);
+			console.log(222);
+		}
 	</script>
 	<script type="text/javascript">
 		function fn() {
