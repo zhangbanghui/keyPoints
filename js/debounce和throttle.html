@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+          debounce: 防抖，一个连续操作中的处理，只触发一次，从而实现防抖动。
+            在 JavaScript 中，debounce 函数所做的事情就是，强制一个函数在某个连续时间段内只执行一次，哪怕它本来会被调用多次。
+            我们希望在用户停止某个操作一段时间之后才执行相应的监听函数，而不是在用户操作的过程当中，浏览器触发多少次事件，就执行多少次监听函数.
+            比如，在某个 3s 的时间段内连续地移动了鼠标，浏览器可能会触发几十（甚至几百）个 mousemove 事件，
+            不使用 debounce 的话，监听函数就要执行这么多次；
+            如果对监听函数使用 100ms 的“去弹跳”，那么浏览器只会执行一次这个监听函数，而且是在第 3.1s 的时候执行的
+
+
+          throttle: 节流，一个连续操作中的处理，按照阀值时间间隔进行触发，从而实现节流。
+            throttle 的概念理解起来更容易，就是固定函数执行的速率，即所谓的“节流”。正常情况下，
+            mousemove 的监听函数可能会每 20ms（假设）执行一次，
+            如果设置 200ms 的“节流”，那么它就会每 200ms 执行一次。
+            比如在 1s 的时间段内，正常的监听函数可能会执行 50（1000/20） 次，“节流” 200ms 后则会执行 5（1000/200） 次。
+        */
+        function debounce(fn, delay, immediate) {
+            var timer = null;
+            return function () {
+                var args = arguments;
+                var _this = this;
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    fn.apply(_this, args);
+                }, delay);
+            }
+        }
+        document.onmousemove = debounce(function (e) {
+            console.log('mousemove', 200)
+        }, 200);
+
+
+
+        function throttle(fn, delay) {
+            var last = null; // 记录上次执行时间
+            var timer = null; // 定时器
+            var delay = delay || 250; // 默认间隔为 250 ms
+            
+            return function () {
+                var args = arguments; // 保存参数
+                var _this = this; // 保存 this
+                var now = +new Date(); // 获取当前时间
+                if(last && now < last + delay) { // 如果当前时间与上次执行的时间间隔小于delay则不执行
+                    clearTimeout(timer);
+                    timer = setTimeout(function() {
+                        fn.apply(_this, args);
+                    }, delay)
+                }else { // 如果大于delay则执行，并重新复制上次执行时间
+                    last = now;
+                    fn.apply(_this, args)
+                }
+            }
+        }
+
+        document.onclick = throttle(function (e) {
+            console.log(e.pageX);
+            console.log('click', 1000)
+        }, 1000)
+
+
+
+
+
+
+    </script>
+</body>
+</html>
