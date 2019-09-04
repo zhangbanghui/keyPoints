@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // 一. 创建一个类
+    class Person{
+        constructor(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        showName() {
+            console.log('name', this.name);
+        }
+    }
+
+    // 二. 实现类的继承(extends, super)
+    class Student extends Person{
+        constructor (name, age, gender) {
+            super(name, age);
+            this.gender = gender;
+        }
+        showGender() {
+            console.log(this.gender)
+        }
+    }
+    
+    var freddy = new Student('freddy',20,'男');
+    console.log(freddy);
+    freddy.showName();
+    freddy.showGender();
+</script>
+</body>
+</html>
