@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            jS编写一个求和函数sum，使输入sum(2)(3)或输入sum(2,3)，输出结果都为5
+        */
+        function sumOne() {
+            var total = 0;
+            var add = function (num) {
+                total += num;
+                console.log(total);
+                return add;
+            }
+            if (arguments.length == 1) {
+                add(arguments[0])
+            }else {
+                for (var i = 0; i < arguments.length; i++) {
+                    add(arguments[i]);
+                }
+            }
+            return add;
+        }
+
+
+        function sumTwo(...args) {
+            let value = 0;
+
+            function innerSum(...args) {
+                value = args.reduce((a, c) => (a += c), value);
+                return innerSum;
+            }
+
+            innerSum.valueOf = function() {
+                return value;
+            };
+
+            return innerSum(...args);
+        }
+
+        sumOne(1, 2, 3)
+        sumOne(1)(2)(3)
+    </script>
+</body>
+</html>

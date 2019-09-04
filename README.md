@@ -86,3 +86,4 @@
   + 导航栏联动
   + onclick 传递对象
   + debounce 和 throttle
+  + js 实现 sum 函数
