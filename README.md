@@ -11,6 +11,7 @@
   + blockquote 和 q 标签
   + meta 标签总结
   + 表单中的fieldset 和 legend 标签
+  + code 标签和 pre 标签的区别
 
 #### CSS
   + 传统响应式布局
