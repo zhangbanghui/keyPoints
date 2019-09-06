@@ -35,6 +35,7 @@
   + 解决外边距重叠问题
   + background总结
   + 使用table布局实现居中
+  + word-wrap, word-break 和 white-space的使用
 
 #### JavaScript
   + iframe 标签使用注意项

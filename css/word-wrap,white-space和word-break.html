@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 
+            word-break: 指定了怎样在单词内断行
+                break-all 在任意字符中断行
+                normal 默认断行规则
+
+            white-space: 如何处理元素中的 空白
+                normal 连续的空白符会被合并，换行符会被当作空白符来处理
+                pre 连续的空白符会被保留。在遇到换行符或者<br>元素时才会换行
+
+            word-wrap(overflow-wrap): 当一个不能被分开的字符串太长而不能填充其包裹盒时，为防止其溢出
+                normal 表示在正常的单词结束处换行
+                break-word 表示如果行内没有多余的地方容纳该单词到结尾，则那些正常的不能被分割的单词会被强制分割换行
+                
+         */
+        div {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #e9e9e9;
+            margin: 100px auto;
+        }
+        .one {
+            word-break: break-all;
+        }
+        .two {
+            word-break: keep-all;
+        }
+        .three {
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="one">
+        aaaaaaaaaaaaaaaaaaaaa
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    </div>
+    <div class="two">
+            aaaaaaaaaaaaaaaaaaaaa
+            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    </div>
+    <div class="three">
+            aaaaaaaaaaaaaaaaaaaaa
+            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    </div>
+</body>
+</html>
