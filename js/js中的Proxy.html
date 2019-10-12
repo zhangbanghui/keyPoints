@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+			Proxy 也就是代理，可以帮助我们完成很多事情，例如对数据的处理，对构造函数的处理，对数据的验证，说白了，就是在我们访问对象前添加了一层拦截，可以过滤很多操作，而这些过滤，由你来定义
+			注意： Vue3.0 中使用 Proxy 代替了 Object.defineProperty 来对数据进行响应式绑定
+		*/ 
+		// var obj = {
+		// 	name: 'kobe',
+		// 	age: 35
+		// }
+		// obj = new Proxy(obj, {
+		// 	get: function (target, name) {
+		// 		console.log(111)
+		// 		console.log(target, name)
+		// 		return 'James'
+		// 	} 
+		// })
+		// console.log(obj.name)
+
+		var pro = new Proxy({}, {
+			get: function (target, name) {
+				return target[name]
+			},
+			set: function (target, key, value) {
+				console.log('u set key')
+				return target[key] = value; 
+			}
+		});
+		pro.name = 'Polo';
+		console.log(pro.name)
+	</script>
+</body>
+</html>
