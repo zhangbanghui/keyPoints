@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h5>原本内容</h5>
+
+	<button onclick="rewrite()">调用write方法</button>
+	<script type="text/javascript">
+
+		/*
+			在一个<script>标记中通过document.write()输出的内容会依次插到该标记的后面（动态加载）。但插入内容没有解析和执行， 解析执行还是按文档顺序下来，等到执行完documemt.write()所在的script标记的内容后再解析执行。但是这仅限于document.write 方式没有写入可引用的外部文件并且引入文件内不包含document.write时的情况。
+		*/ 
+
+
+		document.write('<h4>document.write添加的内容</h4>')
+		document.write('<script>');
+		document.write('alert("write添加的脚本")');
+		document.write('<\/script>');
+
+		function rewrite() {
+			document.write('<h2>页面加载完成后调用write会清除原本页面内容</h2>')
+		}
+	</script>
+</body>
+</html>

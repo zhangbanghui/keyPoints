@@ -92,3 +92,4 @@
   + ES6 实现继承
   + H5 中的 websocket
   + async 和 await 的使用
+  + document.write 方法详解
