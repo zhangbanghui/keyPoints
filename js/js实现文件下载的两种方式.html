@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+			前端实现触发文件下载有两种思路：一种是利用window.location.href去拼接参数；另一种是使用隐藏的iframe+form去发送请求下载文档
+			对于使用window.location.href这种方式从后下载链接只能使用get方式，且发送的中文参数值需要转码，后台接收参数也需要转码
+			对于使用iframe+form的方式就是直接使用表单去提交请求。使用post方式是非常爽的，后端无需处理中文参数，下面直接看具体的代码
+		*/ 
+
+
+
+		// 1.采用window.location.href加拼接url实现文件下载
+		var name = encodeURI(encodeURI('张三'));//对于get方式的请求中文必须转码，否则后台会乱码
+		var age = 30;
+		var gender = 1;
+		 
+		var url = "baidu.com?name="+ name + "&age=" + age+"&gender="+gender;
+		window.location.href = url;
+
+		// 封装成函数
+		function download(url, params) {
+		    if (params instanceof Object && !(params instanceof Array)) {
+		        var pm = params || {};
+		        var arr = [];
+		        arr.push(url);
+		        var j = 0;
+		        for (var i in pm) {
+		            if (j === 0) {
+		                arr.push("?");
+		                arr.push(i + "=" + pm[i]);
+		            } else {
+		                arr.push("&" + i + "=" + pm[i]);
+		            }
+		            j++;
+		        }
+		        window.location.href = arr.join("");
+		    } else {
+		        throw "param is not plain Object";
+		    }
+		}
+		var url = "baidu.com";
+		var params = {
+		    name:encodeURI(encodeURI('张三')),
+		    age:1
+		}
+		download(url,params);
+
+
+
+		// 2.采用影藏iframe+form实现文件下载
+		function downloadIframe(url, params) {
+            var $iframe, iframeDoc, iframeHtml;
+            if (($iframe = $('#download_iframe')).length === 0) {
+                $iframe = $("<iframe id='download_iframe'" +
+                    " style='display: none' src='about:blank'></iframe>"
+                ).appendTo("body");
+            }
+            iframeDoc = $iframe[0].contentWindow || $iframe[0].contentDocument;
+            if (iframeDoc.document) {
+                iframeDoc = iframeDoc.document;
+            }
+            iframeHtml = "<html><head></head><body><form method='POST' action='" + url + "'>"
+            Object.keys(params).forEach(function (key) {
+                iframeHtml += "<input type='hidden' name='" + key + "' value='" + data[key] + "'>";
+            });
+            iframeHtml += "</form></body></html>";
+            iframeDoc.open();
+            iframeDoc.write(iframeHtml);
+            $(iframeDoc).find('form').submit();
+        }
+	</script>
+</body>
+</html>
