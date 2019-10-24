@@ -95,3 +95,4 @@
   + document.write 方法详解
   + js 中的 Proxy
   + js 下载文件的两种方式
+  + 手写 new 关键字

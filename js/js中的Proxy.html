@@ -10,6 +10,20 @@
 			Proxy 也就是代理，可以帮助我们完成很多事情，例如对数据的处理，对构造函数的处理，对数据的验证，说白了，就是在我们访问对象前添加了一层拦截，可以过滤很多操作，而这些过滤，由你来定义
 			注意： Vue3.0 中使用 Proxy 代替了 Object.defineProperty 来对数据进行响应式绑定
 		*/ 
+
+		/*
+			Proxy 和 Object.defineProperty 对比
+			
+			Proxy 的优势如下:
+				1. Proxy 可以直接监听对象而非属性
+				2. Proxy 可以直接监听数组的变化
+				3. Proxy 有多达 13 种拦截方法,不限于 apply、ownKeys、deleteProperty、has 等等是 Object.defineProperty 不具备的
+				4. Proxy 返回的是一个新对象,我们可以只操作新的对象达到目的,而 Object.defineProperty 只能遍历对象属性直接修改
+				5. Proxy 作为新标准将受到浏览器厂商重点持续的性能优化，也就是传说中的新标准的性能红利
+
+			Object.defineProperty 的优势如下：
+				1. 兼容性好，支持 IE9，而 Proxy 的存在浏览器兼容性问题,而且无法用 polyfill 磨平，因此 Vue 的作者才声明需要等到下个大版本( 3.0 )才能用 Proxy 重写
+		*/
 		// var obj = {
 		// 	name: 'kobe',
 		// 	age: 35

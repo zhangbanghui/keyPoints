@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Person(name) {
+            this.name = name;
+            this.say = function () {
+                console.log('say')
+            }
+        }
+
+        var New = function (fn, ...args) {
+            var obj = Object.create(fn.prototype);
+            console.log(obj)
+            var res = fn.apply(obj, args)
+            console.log(res)
+            if (typeof res === 'object') {
+                return res
+            } else {
+                return obj
+            }
+        }
+        var new2 = function (func, ...args) {
+            var o = Object.create(func.prototype); //创建对象
+            console.log(o)
+            var k = func.apply(o, args); //改变this指向，把结果付给k
+            if (typeof k === 'object') { //判断k的类型是不是对象
+                console.log(111)
+                return k; //是，返回k
+            } else {
+                return o; //不是返回返回构造函数的执行结果
+            }
+        }
+
+        var per = new2(Person, 'zs')
+        var per = New(Person, 'zs')
+        console.log(per)
+    </script>
+</body>
+
+</html>
