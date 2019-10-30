@@ -96,3 +96,5 @@
   + js 中的 Proxy
   + js 下载文件的两种方式
   + 手写 new 关键字
+  + switch 和 case 语法
+  + ES6 中的展开运算符和剩余操作符

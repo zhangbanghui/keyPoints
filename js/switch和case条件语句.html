@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        *    break 语句,它用于跳出 switch() 语句，来阻止代码自动地向下一个 case 运行
+        *    default 关键词来规定匹配不存在时做的事情
+        */ 
+        function fruit(kind) {
+            switch(kind) {
+                case '苹果':
+                    console.log('苹果')
+                    break;
+                case '香蕉':
+                    console.log('香蕉')
+                    break;
+                default: 
+                    console.log('其他')
+            }
+        }
+        fruit('111')
+        fruit('苹果')
+        fruit('香蕉')
+    </script>
+</body>
+</html>

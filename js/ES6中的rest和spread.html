@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            
+             Spread   展开运算符
+
+            对象展开语法从源对象中提取自有和可枚举的属性，并将它们复制到目标对象中
+            在许多方面，对象展开语法等价于object.assign()，上面的代码也可以这样实现
+            对象字面量可以具有多个对象展开，与常规属性声明的任意组合
+            当多个对象展开并且某些属性具有相同的键时,后展开属性会覆盖前端相同属性
+
+
+            Rest     剩余操作符
+            在使用解构赋值将对象的属性提取到变量之后，可以将剩余属性收集到rest对象中
+           
+
+        */
+        const cat = {
+            age: 3,
+            name: 'miao'
+        }
+        const dog = {
+            ...cat,
+            age: 4,
+            gender: 'male'
+        }
+        console.log({
+            ...dog
+        })
+
+        //    使用展开语法可以很方便的拷贝对象，来创建bird对象的一个副本
+        const bird = {
+            type: 'pigeon',
+            color: 'white'
+        };
+        const birdClone = {
+            ...bird
+        };
+        console.log(bird === birdClone); // => false
+        // 对象展开执行的是对象的浅拷贝。 仅克隆对象本身，而不克隆嵌套对象。
+        const laptop = {
+            name: 'MacBook Pro',
+            screen: {
+                size: 17,
+                isRetina: true
+            }
+        };
+        const laptopClone = {
+            ...laptop
+        };
+        console.log(laptop === laptopClone); // => false
+        console.log(laptop.screen === laptopClone.screen); // => true
+
+
+
+        // 在使用解构赋值将对象的属性提取到变量之后，可以将剩余属性收集到rest对象中
+        const style = {
+            width: 300,
+            marginLeft: 10,
+            marginRight: 30
+        };
+        const {
+            width,
+            ...others
+        } = style;
+        console.log(others)  // => { marginLeft: 10, marginRight: 30 }
+        // 解构赋值定义了一个新的变量width，并将其值设置为style.width。 对象剩余操作...margin将解构其余属性marginLeft和marginRight收集到margin
+        // 对象剩余(rest)操作只收集自有的和可枚举的属性
+    </script>
+</body>
+
+</html>
