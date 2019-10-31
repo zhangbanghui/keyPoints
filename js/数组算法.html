@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 编写一个程序将数组扁平化去并除其中重复部分数据，最终得到一个升序且不重复的数组
+        var arr = [ [1, 2, 2], [3, 4, 5, 5], [6, 7, 8, 9, [11, 12, [12, 13, [14] ] ] ], 10];
+
+        // flat() 方法会按照一个可指定的深度递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回
+        var res = arr.flat(Infinity); 
+        res = new Set(res); // 去重
+        res = Array.from(res); // Set 类型转 Array 类型
+        res = res.sort((a, b) => a - b); // 排序
+        console.log(res)
+    </script>
+</body>
+</html>
