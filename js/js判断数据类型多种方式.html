@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            判断js数据类型，也就是我们说的类型检测,一共包含4种通用方法:
+                1. typeof 
+                    typeof算是最常见的了，使用它会返回一个字符串，
+                    适合函数对象和基本类型（js中的基本类型：number、string、boolean、null、undefined、object［对象］）的判断
+
+                2. instanceof
+                    nstanceof操作符判断左操作数对象的原型链上是否有右边这个构造函数的prototype属性，
+                    也就是说指定对象是否是某个构造函数的实例，最后返回布尔值，这个对整个原型链上的对象都是有效的，
+                    由于instanceof对整个原型链上的对象都有效，因此同一个实例对象，可能会对多个构造函数都返回true！
+
+                3. construtor
+                    所有实例对象都有constructor属性，constructor属性指向prototype对象所在的构造函数，就是说指向创建这个实例的构造函数,
+                    用costructor来判断类型看起来是完美的，然而，如果我创建一个对象，更改它的原型，这种方式也变得不可靠了
+
+                4. Object.prototype.toString.call()
+                    使用 Object 对象的原型方法 toString ，使用 call 进行狸猫换太子，借用Object的 toString  方法
+        */ 
+
+        console.log(typeof null); // Object
+        console.log(typeof 111); // number
+        console.log(typeof 'aaa'); // string
+        console.log(typeof undefined); // undefined
+        console.log(typeof true); // boolean
+        console.log(typeof NaN); // number
+        console.log(typeof [1,2]); // object
+        console.log(typeof new Function()); // function
+
+        console.log(Object.prototype.toString.call([])) // [Object Array]
+        console.log(Object.prototype.toString.call({})) // [Object Object]
+        console.log(Object.prototype.toString.call(new Function())) // [Object Function]
+
+    </script>
+</body>
+</html>
