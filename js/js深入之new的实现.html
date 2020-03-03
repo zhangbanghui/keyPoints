@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Otaku(name, age) {
+      this.name = name;
+      this.age = age;
+      this.hobby = 'games'
+    }
+    Otaku.prototype.strength = 60;
+    Otaku.prototype.sayName = function () {
+      console.log('My name is ' + this.name)
+    }
+    let per = new Otaku('小明', 21)
+    console.log('per', per)
+
+    function selfNew() {
+      let obj = new Object();
+      let constructor = [].shift.call(arguments)
+      obj.__proto__ = constructor.prototype
+      let res = constructor.apply(obj, arguments)
+      return typeof res === 'object' ? res : obj
+    }
+    let person = selfNew(Otaku, 'kevin', 19)
+    console.log(person)
+  </script>
+</body>
+</html>

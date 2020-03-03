@@ -103,3 +103,5 @@
   + options 请求
   + js 判断类型的多种方式
   + 手写 sleep 函数
+  + js 深入之 call 和 apply 的实现
+  + js 深入之 new 的实现

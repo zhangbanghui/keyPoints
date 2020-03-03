@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+      一句话介绍call: 
+        call 方法在使用一个指定的 this 值和若干个指定的参数值的前提下调用某个函数或方法
+    */
+    let foo = {
+      value: 1
+    }
+
+    function sayValue() {
+      console.log(this.value)
+    }
+    sayValue.call(foo)
+
+    // 第一版
+    Function.prototype.selfCallOne = function (context) {
+      context.fn = this;
+      context.fn();
+      delete context.fn
+    }
+    sayValue.selfCallOne(foo)
+
+    // 第二版
+    /*
+      最一开始也讲了，call 函数还能给定参数执行函数。举个例子
+      var foo = {
+          value: 1
+      };
+
+      function bar(name, age) {
+          console.log(name)
+          console.log(age)
+          console.log(this.value);
+      }
+
+      bar.call(foo, 'kevin', 18);
+      // kevin
+      // 18
+      // 1
+    */
+    Function.prototype.selfCallTwo = function(context) {
+      context.fn = this;
+      let args = [];
+      for(let i = 1; i < arguments.length; i++) {
+        args.push(arguments[i])
+      }
+      context.fn(...args)
+      delete context.fn
+    }
+    let foo2 = {
+      value: 2
+    }
+    function bar2(a, b) {
+      console.log(this.value)
+      console.log('bar2', a, b)
+    }
+    bar2.selfCallTwo(foo2, 1, 2)
+
+    // 最终版
+    /*
+      1. this 参数可以传 null，当为 null 的时候，视为指向 window
+      2. 函数是可以有返回值的！
+    */ 
+    Function.prototype.selfCallThree = function(context) {
+      context.fn = this || window;
+      let args = [];
+      for(let i = 0; i < arguments.length; i++) {
+        args.push(arguments[i])
+      }
+      let res = context.fn(...args)
+      delete context.fn
+      return res
+    }
+    let obj3 = {
+      value: 3
+    }
+    function bar3(a, b) {
+      console.log(this.value)
+      console.log('bar3', a, b)
+      return {
+        value: this.value
+      }
+    }
+    let res3 = bar3.selfCallThree(obj3, 2, 3)
+    console.log(res3)
+
+    // apply 实现
+    Function.prototype.selfApply = function(context, arr) {
+      context.fn = this || window;
+      let res
+      if(!arr) {
+        res = context.fn()
+      }else {
+        res = context.fn(...arr)
+      }
+      delete context.fn
+      return res
+    }
+    let obj4 = {
+      value: 4
+    }
+    function bar4(a, b) {
+      console.log(this.value)
+      console.log('bar4', a, b)
+    }
+    bar4.selfApply(obj4, [4, 5])
+  </script>
+</body>
+
+</html>
