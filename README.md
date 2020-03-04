@@ -105,3 +105,4 @@
   + 手写 sleep 函数
   + js 深入之 call 和 apply 的实现
   + js 深入之 new 的实现
+  + js 深入之类数组对象
