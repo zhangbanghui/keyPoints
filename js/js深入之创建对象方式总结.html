@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+      创建对象的多种方式总结
+    */ 
+
+    /*
+      工厂模式:
+        缺点：对象无法识别，因为所有的实例都指向一个原型
+    */ 
+    function createPerson(name) {
+      let obj = new Object();
+      obj.name = name;
+      obj.getName = function () {
+        console.log(this.name)
+      }
+      return obj
+    }
+    let per1 = createPerson('per1')
+    console.log('per1', per1)
+
+    /*
+      构造函数模式:
+        优点：实例可以识别为一个特定的类型
+        缺点：每次创建实例时，每个方法都要被创建一次
+    */
+    function Person(name) {
+      this.name = name;
+      this.getName = function () {
+        console.log(this.name)
+      }
+    }
+    let per2 = new Person('per2')
+    console.log('per2', per2)
+
+    /*
+      原型模式:
+        优点：方法不会重复创建
+        缺点：1. 所有的属性和方法都共享 2. 不能初始化参数
+    */
+    function Person2() {}
+    Person2.prototype.name = 'kevin'
+    Person2.prototype.getName = function () {
+      console.log(this.name)
+    }
+    let per3 = new Person2('kevin')
+    console.log('per3', per3)
+
+    /*
+      组合模式:
+        优点：该共享的共享，该私有的私有，目前使用最广泛的方式
+        缺点：有的人就是希望全部都写在一起，即更好的封装性
+    */
+    function Person3(name) {
+      this.name = name;
+    }
+    Person3.prototype = {
+      constructor: Person,
+      getName: function () {
+        console.log(this.name)
+      }
+    }
+    let per4 = new Person3('kevin')
+    console.log('per4', per4)
+  </script>
+</body>
+</html>

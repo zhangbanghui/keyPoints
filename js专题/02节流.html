@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 500px;
+      height: 300px;
+      background-color: #444;
+      color: #fff;
+      text-align: center;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div id="box"></div>
+  <script>
+    /*
+      节流的原理:
+        如果你持续触发事件，每隔一段时间，只执行一次事件。  
+
+      关于节流的实现，有两种主流的实现方式，一种是使用时间戳，一种是设置定时器.
+    */ 
+
+    // 使用时间戳
+    // 事件会立刻执行
+    function throttle(fn, delay) {
+      var previous = 0;
+      return function () {
+        var _this = this;
+        var args = arguments;
+        var now = +new Date();
+        if(now - previous > delay) {
+          previous = now;
+          fn.apply(_this, args)
+        }
+      }
+    }
+
+    // 使用定时器
+    // 事件会在 n 秒后第一次执行
+    function throttle(fn, delay) {
+      var timeout;
+      // var box = document.getElementById('box')
+      return function () {
+        var _this = this;
+        var args = arguments;
+        if(!timeout) {
+          timeout = setTimeout(function () {
+            timeout = null;
+            fn.apply(_this, args)
+          }, delay) 
+        }
+      }
+    }
+
+    // 双剑合璧
+    function throttle(fn, delay) {
+      var timeout;
+      var previous = 0;
+      var later = function () {
+        previous = +new Date()
+        timeout = null;
+        fn.apply(_this, args)
+      }
+      var throttled =  function () {
+        var _this = this;
+        var args = arguments;
+        var now = +new Date();
+        var remaining = delay - (now - previous);
+        if(remaining <= 0 || remaining > delay) {
+          if(timeout) {
+            clearTimeout(timeout)
+            timeout = null
+          }
+          previous = now;
+          fn.apply(_this, args)
+        }else if(!timeout) {
+          timeout = setTimeout(later, remaining)
+        }
+      }
+      return throttled
+    }
+
+
+
+
+    var box = document.getElementById('box');
+    var total = 0;
+    function addCount() {
+      total += 1;
+      box.innerHTML = total
+    }
+    box.onmousemove = throttle(addCount, 1000)
+  </script>
+</body>
+</html>

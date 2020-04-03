@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #Bbox {
+      box-sizing: border-box;
+      width: 200px;
+      height: 200px;
+      border: 10px solid cyan;
+      padding: 10px;
+    }
+    #Cbox {
+      box-sizing: content-box;
+      width: 200px;
+      height: 200px;
+      border: 10px solid orange;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 有两种盒子模型： IE 盒模型（border-box）、W3C 标准盒模型（content-box） -->
+  <h3>IE 盒模型（border-box）</h3>
+  <p>IE 盒模型的 width 和 height 属性的范围包含了 border、padding 和 content</p>
+  <div id="Bbox"></div>
+  <h3>W3C 标准盒模型（content-box）</h3>
+  <p>标准盒模型的 width 和 height 属性的范围只包含了 content</p>
+  <div id="Cbox"></div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+      1. 原型链继承
+    */ 
+    function Person(name) {
+      this.name = name;
+    }
+    Person.prototype.getName = function () {
+      console.log(this.name)
+    }
+    function Student(age) {
+      this.age = age;
+    }
+    Student.prototype = new Person('kevin')
+    let stu = new Student(18)
+    console.log(stu)
+
+    /*
+      2. 借用构造函数(经典继承)
+    */ 
+    function Parent() {
+      this.names = ['a,', 'b']
+    }
+    function Child() {
+      Parent.call(this)
+    }
+    let child = new Child()
+    console.log('child', child)
+
+    /*
+      3. 组合继承
+    */ 
+    function Animal(name) {
+      this.name = name;
+    }
+    Animal.prototype.getName = function () {
+      console.log(this.name)
+    }
+    function Cat(name, sex) {
+      Animal.call(this, name)
+      this.sex = sex;
+    }
+    Cat.prototype = new Animal();
+    Cat.prototype.constructor = Cat;
+    let cat = new Cat('小花猫', '公')
+    console.log('cat', cat)
+  </script>
+</body>
+</html>

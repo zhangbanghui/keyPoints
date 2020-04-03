@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #container {
+      width: 500px;
+      height: 200px;
+      background-color: #444;
+      text-align: center;
+      font-size: 20px;
+      color: #fff;
+    }
+
+    #SomeElementYouWantToAnimate,
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    #box {
+      top: 120px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="SomeElementYouWantToAnimate"></div>
+  <div id="box"></div>
+  <div id="container"></div>
+  <script>
+    /*
+      防抖的原理：
+      你尽管触发事件，但是我一定在事件触发 n 秒后才执行，
+      如果你在一个事件触发的 n 秒内又触发了这个事件，那我就以新的事件的时间为准，n 秒后才执行，
+      总之，就是要等你触发完事件 n 秒内不再触发事件，我才执行
+        
+    */
+    let container = document.querySelector('#container')
+    let count = 1;
+
+    function addCount() {
+      // console.log(this)
+      count++;
+      container.innerHTML = count;
+    }
+    // container.onmousemove = addCount;
+
+    /*
+      this
+        如果使用我们的 debounce 函数，this 就会指向 Window 对象,所以我们需要将 this 指向正确的对象。
+    */
+
+    // function debounce(fn, delay = 1000) {
+    //   var timeout;
+    //   return function () {
+    //     clearTimeout(timeout)
+    //     var _this = this;
+    //     timeout = setTimeout(function () {
+    //       var args = arguments;
+    //       fn.apply(_this, args)
+    //     }, delay)
+    //   }
+    // }
+    // container.onmousemove = debounce(addCount, 1000);
+
+    /*
+      立刻执行
+        这个时候，代码已经很是完善了，但是为了让这个函数更加完善，我们接下来思考一个新的需求:
+        我不希望非要等到事件停止触发后才执行，我希望立刻执行函数，然后等到停止触发 n 秒后，才可以重新触发执行
+    */
+    function debounce(fn, delay = 1000, immediate) {
+      var timeout;
+      return function () {
+        if (timeout) clearTimeout(timeout)
+        var _this = this;
+        var args = arguments;
+
+        if (immediate) {
+          var isNow = !timeout;
+          timeout = setTimeout(function () {
+            timeout = null;
+          }, delay)
+          if (isNow) fn.apply(_this, args)
+        } else {
+          timeout = setTimeout(function () {
+            fn.apply(_this, args)
+          }, delay)
+        }
+      }
+    }
+    container.onmousemove = debounce(addCount, 1000, true);
+
+    function debounce(fn, delay, immedidate) {
+      var timeout
+      return function () {
+        if (timeout) {
+          clearTimeout(timeout)
+        }
+        var _this = this;
+        var args = arguments;
+        if (immedidate) {
+          var isNow = !timeout;
+          timeout = setTimeout(function () {
+            timeout = null
+          }, delay)
+          if (isNow) fn.apply(_this, args)
+        } else {
+          timeout = setTimeout(function () {
+            fn.apply(_this, args)
+          }, delay)
+        }
+      }
+    }
+
+    function moveOne(target) {
+      var startTime = Date.now()
+      var timer = setInterval(function () {
+        let box = document.getElementById('SomeElementYouWantToAnimate')
+        var left = box.offsetLeft;
+        if (left < 1000) {
+          if (left + 5 > 1000) {
+            left = 1000
+          } else {
+            left += 5;
+          }
+        }else {
+          console.log(`one end, use ${Date.now() - startTime}`)
+          clearInterval(timer)
+        }
+        box.style.left = left + 'px'
+      }, 1000 / 60)
+    }
+    // setInterval(move, 1000 / 60)
+    function moveTwo(startTime) {
+      // console.log('startTime', startTime)
+      var timer
+      let box = document.getElementById('box')
+      var left = box.offsetLeft;
+      if (left < 1000) {
+        if (left + 5 > 1000) {
+          left = 1000
+        } else {
+          left += 5;
+        }
+        timer = requestAnimationFrame(moveTwo)
+      }else {
+        console.log(`two end, use ${startTime}`)
+        cancelAnimationFrame(timer);
+      }
+      box.style.left = left + 'px'
+      
+    }
+    moveOne()
+    // var timer = window.requestAnimationFrame(moveTwo)
+    var startTime = Date.now()
+    // console.log('startTime', startTime)
+    moveTwo()
+  </script>
+</body>
+
+</html>

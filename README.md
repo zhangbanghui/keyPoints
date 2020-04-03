@@ -36,6 +36,9 @@
   + background总结
   + 使用table布局实现居中
   + word-wrap, word-break 和 white-space的使用
+  + 同一行多个div高度自适应相同
+  + 盒模型总结
+  + css 可以继承的属性总结
 
 #### JavaScript
   + iframe 标签使用注意项
@@ -106,3 +109,9 @@
   + js 深入之 call 和 apply 的实现
   + js 深入之 new 的实现
   + js 深入之类数组对象
+  + js 深入之创建对象方法总结
+  + requestAnimationFrame使用方法
+
+#### JavaScript
+  + 防抖
+  + 节流

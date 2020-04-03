@@ -36,9 +36,97 @@
 		.item:nth-of-type(3) {
 			background-color: skyblue;
 		}
+		.outer {
+			width: 600px;
+			height: 600px;
+			border: 1px solid #000;
+			margin: 0 auto;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+			align-items: center;
+		}
+		.inner {
+			width: 150px;
+			height: 150px;
+			border: 2px solid #000;
+			display: flex;
+		}
+		.ball {
+			width: 40px;
+			height: 40px;
+			background-color: #333;
+			border-radius: 50%;
+		}
+		.inner:nth-of-type(2) {
+			justify-content: center;
+		}
+		.inner:nth-of-type(3) {
+			align-items: center;
+		}
+		.inner:nth-of-type(4) {
+			justify-content: space-between;
+		}
+		.inner:nth-of-type(5) {
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: flex-end;
+		}
+		.inner:nth-of-type(7) {
+		  justify-content: space-around;
+		}
+		.inner:nth-of-type(6) .ball:nth-child(2) {
+			align-self: center;
+		}
+		.inner:nth-of-type(7) .ball:nth-of-type(2) {
+			align-self: center;
+		}
+		.inner:nth-of-type(7) .ball:nth-of-type(3) {
+			align-self: flex-end;
+		}
+		.inner:nth-of-type(8) {
+			flex-wrap: wrap;
+			justify-content: flex-end;
+			align-content: space-between;
+		}
 	</style>
 </head>
 <body>
+	<div class="outer">
+		<div class="inner">
+			<div class="ball"></div>
+		</div>
+		<div class="inner">
+			<div class="ball"></div>
+		</div>
+		<div class="inner">
+			<div class="ball"></div>
+		</div>
+		<div class="inner">
+			<div class="ball"></div>
+			<div class="ball"></div>
+		</div>
+		<div class="inner">
+			<div class="ball"></div>
+			<div class="ball"></div>
+		</div>
+		<div class="inner">
+			<div class="ball"></div>
+			<div class="ball"></div>
+		</div>
+		<div class="inner">
+			<div class="ball"></div>
+			<div class="ball"></div>
+			<div class="ball"></div>
+		</div>
+		<div class="inner">
+			<div class="ball"></div>
+			<div class="ball"></div>
+			<div class="ball"></div>
+			<div class="ball"></div>
+		</div>
+		<div class="inner"></div>
+	</div>
 	<div class="box">
 		<div class="item"></div>
 		<div class="item"></div>

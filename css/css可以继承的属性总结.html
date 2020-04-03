@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .par {
+      width: 200px;
+      height: 200px;
+      border: 2px solid red;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .child1 {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+    }
+  </style>
+</head>
+<body>
+  <p>每个 CSS 属性定义的概述都指出了这个属性是默认继承的，还是默认不继承的。这决定了当你没有为元素的属性指定值时该如何计算值</p>
+  <p>当元素的一个继承属性没有指定值时，则取父元素的同属性的计算值。只有文档根元素取该属性的概述中给定的初始值（这里的意思应该是在该属性本身的定义中的默认值）</p>
+  <p>当元素的一个非继承属性（在 Mozilla code 里有时称之为 reset property ）没有指定值时，则取属性的初始值 initial value（该值在该属性的概述里被指定）</p>
+  <h3>有继承性的属性:</h3>
+  <h5>字体系列属性:</h5>
+  <p>font、font-family、font-weight、font-size、font-style、font-variant、font-stretch、font-size-adjust</p>
+  <h5>文本系列属性</h5>
+  <p>text-indent、text-align、text-shadow、line-height、word-spacing、letter-spacing、text-transform、direction、color</p>
+  <h5>表格布局属性</h5>
+  <p>caption-side border-collapse empty-cells</p>
+  <h5>列表属性</h5>
+  <p>list-style-type、list-style-image、list-style-position、list-style</p>
+  <h5>光标属性</h5>
+  <p>cursor</p>
+  <h5>元素可见性</h5>
+  <p>visibility</p>
+  <div class="par">
+    par
+    <div class="child1">
+      child1
+    </div>
+    <div class="child2"></div>
+  </div>
+</body>
+</html>

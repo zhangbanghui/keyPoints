@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: cyan;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="box"></div>
+  <script>
+    const BOX = document.getElementById('box')
+    function moveBox() {
+      let left = BOX.offsetLeft;
+      console.log('1111', left)
+      if(left < 1000) {
+        left += 10;
+        BOX.style.left = left + 'px';
+        console.log('1111', left)
+        window.requestAnimationFrame(moveBox)
+      }
+    }
+    window.requestAnimationFrame(moveBox)
+  </script>
+</body>
+</html>
