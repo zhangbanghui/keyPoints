@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // js开发技巧
+
+    // 1. 数组交集
+    /*
+    const arr1 = [1, 2, 4, 6, 7], arr2 = [1, 5, 7, 10]
+    const newArr = arr1.filter(item => arr2.indexOf(item) > -1)
+    // 或者
+    const newArr = arr1.filter(item => arr2.includes(item))
+    console.log('newArr', newArr)
+    */ 
+
+    // 2. 数据并集
+    /*
+    const arr1 = [1, 2, 4, 6, 7], arr2 = [1, 5, 7, 10]
+    const newArr = arr1.concat(arr2.filter(item => !arr1.includes(item))).sort((a, b) => a - b)
+    console.log('newArr', newArr)
+    */ 
+
+    // 3. 数组差值
+    /*
+    const arr1 = [1, 2, 4, 6, 7], arr2 = [1, 5, 7, 10]
+    const newArr = arr1.filter(item => !arr2.includes(item))
+    console.log('newArr', newArr)
+    */ 
+
+    // 4. 数组去重
+    /*
+    const arr1 = [1, 2, 4, 6, 7, 5, 4, 3, 2, 1]
+    const newArr = Array.from(new Set(arr1))
+    console.log('newArr', newArr)
+    */ 
+
+    // 5. 求最大值
+    const arr1 = [1, 2, 4, 6, 7, 5, 4, 3, 2, 1]
+    const maxValue = Math.max(...arr1)
+    console.log('newArr', maxValue)
+  </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // FIFO(first in first out) 先进先出结构
+    function Queue() {
+      this.queue = []
+      
+      // 1. 将元素添加到队列中
+      Queue.prototype.enqueue = item => this.queue.push(item)
+
+      // 2. 从队列前端删除元素
+      Queue.prototype.dequeue = () => this.queue.shift()
+
+      // 3. 查看前端元素
+      Queue.prototype.front = () => this.queue[0] 
+
+      // 4. 查看队列是否为空
+      Queue.prototype.isEmpty = () => this.queue.length === 0
+
+      // 5. 产看队列中元素的个数 
+      Queue.prototype.size = () => this.queue.length
+
+      // 6. 将队列中的元素以字符串的形式输出
+      Queue.prototype.toString = () => {
+        let resultStr = ''
+        for (let i in this.queue) {
+          resultStr += i + ''
+        }
+        return resultStr
+      }
+    }
+    
+    // Queue.prototype.enqueue = function(item) {
+    //   this.queue.push(item)
+    // }
+
+    let queue = new Queue()
+    queue.enqueue(1)
+    queue.enqueue(2)
+    queue.enqueue(3)
+    queue.enqueue(4)
+
+    console.log(queue.size())
+
+    // 击鼓传花
+    const passGame = (nameList, num) => {
+      const queue = new Queue()
+      for (let i = 0; i < nameList.length; i++) {
+        queue.enqueue(nameList[i])
+      }
+      while(queue.size() > 1) {
+        for (let i = 0; i < num - 1; i++) {
+          queue.enqueue(queue.dequeue())
+        }
+        queue.dequeue()
+      }
+      console.log(queue.size())
+      return queue.front()
+    }
+    const nameList = ['小红', '马云', '马化腾', '丁磊', '雷军']
+    console.log(passGame(nameList, 3))
+   
+
+  </script>
+</body>
+</html>

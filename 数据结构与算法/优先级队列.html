@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function PriorityQueue() {
+      function QueueElement(element, priority) {
+        this.element = element
+        this.priority = priority
+      }
+      this.queue = []
+
+      // 1. 将元素添加到队列中
+      PriorityQueue.prototype.enqueue = (element, priority) => {
+        const item = new QueueElement(element, priority)
+        if (this.queue.length === 0) {
+          this.queue.push(item)
+        } else {
+          let flag = false
+          for (let i = 0; i < this.queue.length; i++) {
+            if (item.priority < this.queue[i].priority) {
+              this.queue.splice(i, 0, item)
+              flag = true
+              break
+            }
+          }
+          if (!flag) this.queue.push(item)
+        }
+      }
+
+      // 2. 从队列前端删除元素
+      PriorityQueue.prototype.dequeue = () => this.queue.shift()
+
+      // 3. 查看前端元素
+      PriorityQueue.prototype.front = () => this.queue[0] 
+
+      // 4. 查看队列是否为空
+      PriorityQueue.prototype.isEmpty = () => this.queue.length === 0
+
+      // 5. 产看队列中元素的个数
+      PriorityQueue.prototype.size = () => this.queue.length
+
+      // 6. 将队列中的元素以字符串的形式输出
+      PriorityQueue.prototype.toString = () => {
+        let resultStr = ''
+        for (let i in this.queue) {
+          resultStr += this.queue[i].element + '==' + this.queue[i].priority
+        }
+        return resultStr
+      }
+    }
+    const pq = new PriorityQueue()
+    pq.enqueue('asd', 12)
+    pq.enqueue('sqwe', 109)
+    pq.enqueue('a', 3)
+    pq.enqueue('bas', 98)
+    pq.enqueue('ds', 49)
+    alert(pq)
+  </script>
+</body>
+</html>

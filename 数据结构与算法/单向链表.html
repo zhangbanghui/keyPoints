@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function LinkedList() {
+      function Node(data) {
+        this.data = data
+        this.next = null
+      }
+      this.head = null
+      this.length = 0
+
+      // 1. 实现 append 方法
+      LinkedList.prototype.append = (data) => {
+        // 1. 创建新节点
+        const newNode = new Node(data)
+        // 2. 判断是否是第一个节点
+        if (this.length === 0) {
+          this.head = newNode
+        } else {
+          let current = this.head
+          while (current.next) {
+            current = current.next
+          }
+          current.next = newNode
+        }
+
+        // 3. length + 1
+        this.length += 1
+      }
+
+      // 2. 实现 toString 方法
+      LinkedList.prototype.toString = () => {
+        let current = this.head
+        let listStr = ''
+        while (current) {
+          listStr = listStr + current.data + ' '
+          current = current.next
+        }
+        return listStr
+      }
+
+      // 3. 实现 insert 方法
+      LinkedList.prototype.insert = (position, data) => {
+        const newNode = new Node(data)
+        // 1. position 越界判断
+        if (position < 0 || position > this.length) return false
+        // 2. 如果 postion 为 0
+        if (position === 0) {
+          newNode.next = this.head
+          this.head = newNode
+        } else {
+          let index = 0
+          let current = this.head
+          let previous = null
+          while (index ++ < position) {
+            previous = current
+            current = current.next
+          }
+          newNode.next = current
+          previous.next = newNode
+        }
+        this.length += 1
+        return true
+      }
+
+      // 4. 实现 get 方法
+      LinkedList.prototype.get = position => {
+        if (position < 0 || position >= this.length) return null
+        let index = 0
+        let current = this.head
+        while (index++ < position) {
+          current = current.next
+        }
+        return current.data
+      }
+
+      // 5. 实现 indexOf 方法
+      LinkedList.prototype.indexOf = data => {
+        let index = 0
+        let current = this.head
+        while (current) {
+          if (current.data == data) {
+            return index
+          }
+          current = current.next
+          index += 1
+        }
+        return -1
+      }
+
+      // 6. 实现 update 方法
+      LinkedList.prototype.update = (position, data) => {
+        if (position < 0 || position >= this.length) return false
+        let current = this.head
+        let index = 0
+        while (index < position) {
+          current = current.next
+          index += 1
+        }
+        current.data = data
+        return true
+      }
+
+      // 7. 实现 removeAt 方法
+      LinkedList.prototype.removeAt = position => {
+        // 越界判断
+        if (position < 0 || position >= this.length) return null
+        let current = this.head
+        // 判断 position 是否为 0
+        if (position === 0) {
+          this.head = current.next
+        } else {
+          let previous = null
+          let index = 0
+          while (index < position) {
+            previous = current
+            current = current.next
+            index += 1
+          }
+          previous.next = current.next
+        }
+        this.length -= 1
+        // 返回被删除的节点的 data
+        return current.data
+      }
+
+      // 8. 实现 remove 方法
+      LinkedList.prototype.remove = data => {
+        let position = this.indexOf(data)
+        return this.removeAt(position)
+      }
+
+      // 9. 实现 isEmpty 方法
+      LinkedList.prototype.isEmpty = () => {
+        return this.length === 0
+      }
+
+      // 10. 实现 size 方法
+      LinkedList.prototype.size = () => {
+        return this.length
+      }
+    }
+    const ll = new LinkedList()
+    ll.append(1)
+    ll.append(2)
+    console.log(ll)
+  </script>
+</body>
+</html>

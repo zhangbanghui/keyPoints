@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Set() {
+      this.items = {}
+      
+      // 1. has
+      Set.prototype.has = value => {
+        return this.items.hasOwnProperty(value)
+      }
+
+      // 2. add
+      Set.prototype.add = value => {
+        if (this.has(value)) return false
+        this.items[value] = value
+        return true
+      }
+
+      // 3. remove
+      Set.prototype.remove = value => {
+        if (!this.has(value)) return false
+        delete this.items[value]
+        return true
+      }
+
+      // 4. clear
+      Set.prototype.clear = () => {
+        this.items = {}
+      }
+
+      // 5. size 
+      Set.prototype.size = () => {
+        return Object.keys(this.items).length
+      }
+
+      // 6. values
+      Set.prototype.values = () => {
+        return Object.keys(this.items)
+      }
+    }
+  </script>
+</body>
+</html>
